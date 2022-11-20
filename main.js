@@ -5,17 +5,37 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { Mesh } from 'three';
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({
+var camera;
+var scene;
+var renderer;
+
+scene = new THREE.Scene();
+camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000);
+renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg'),
 });
+
+function init() {
+  scene = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  renderer = new THREE.WebGLRenderer({
+    canvas: document.querySelector('#bg'),
+  });
+}
+
 renderer.setPixelRatio( window.devicePixelRatio);
 renderer.setSize( window.innerWidth, window.innerHeight); /* makes the renderer full screen */
 
 camera.position.setZ(30);
 
 renderer.render(scene, camera);
+
+function onResize() {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+}
+window.addEventListener('resize', onResize, false);
 
 const geometry = new THREE.TorusGeometry( 10, 3, 16, 100);
 // const material = new THREE.MeshBasicMaterial( { color: 0xFF6347, wireframe: true});
@@ -52,13 +72,13 @@ Array(200).fill().forEach(addStar);
 const spaceTexture = new THREE.TextureLoader().load('space.jpg');
 scene.background = spaceTexture;
 
-const jeffTexture = new THREE.TextureLoader().load('jeff.png');
-const jeff = new THREE.Mesh(
+const reubenTexture = new THREE.TextureLoader().load('reuben.jpg');
+const reuben = new THREE.Mesh(
   new THREE.BoxGeometry(3,3,3),
-  new THREE.MeshBasicMaterial({map: jeffTexture})
+  new THREE.MeshBasicMaterial({map: reubenTexture})
 );
-jeff.position.set(20, 10, 10);
-scene.add(jeff);
+reuben.position.set(20, 10, 10);
+scene.add(reuben);
 
 // Moon
 const moonTexture = new THREE.TextureLoader().load('moon.jpg');
@@ -83,8 +103,8 @@ function moveCamera(){
   moon.rotation.z += 0.05;
   // moon.rotateZ(0.05);
 
-  jeff.rotation.y += 0.01;
-  jeff.rotation.z += 0.01;
+  reuben.rotation.y += 0.01;
+  reuben.rotation.z += 0.01;
 
   camera.position.z = (t-10) * -0.01;
   // camera.position.x = (t) * -0.02;
