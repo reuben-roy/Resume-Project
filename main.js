@@ -10,8 +10,8 @@ import * as TWEEN from '@tweenjs/tween.js';
 import gsap from 'gsap';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import {RGBELoader} from 'three/examples/jsm/loaders/RGBELoader.js';
-const bodyChanUrl = new URL('person_sculpture.glb', import.meta.url);
-const hornGuy = new URL('faceted_character_locomotion_animation.glb', import.meta.url);
+// const bodyChanUrl = new URL('person_sculpture.glb', import.meta.url);
+// const hornGuy = new URL('faceted_character_locomotion_animation.glb', import.meta.url);
 
 var camera;
 var scene;
@@ -100,7 +100,6 @@ torus.position.set(-10, 0, 0);
 scene.add(torus);
 
 const geometry2 = new THREE.TorusGeometry( 16, 3, 30, 100);
-// const material = new THREE.MeshBasicMaterial( { color: 0xFF6347, wireframe: true});
 const material2 = new THREE.MeshStandardMaterial( { color: 0x696969});
 material2.metalness = 1;
 material2.roughness = 0.4;
@@ -110,7 +109,6 @@ torus2.position.set(-10, 0, 0);
 scene.add(torus2);
 
 const geometry3 = new THREE.TorusGeometry( 22, 3, 30, 100);
-// const material = new THREE.MeshBasicMaterial( { color: 0xFF6347, wireframe: true});
 const material3 = new THREE.MeshStandardMaterial( { color: 0x66b3ff});
 material3.metalness = 1;
 material3.roughness = 0.4;
@@ -120,7 +118,6 @@ torus3.position.set(-10, 0, 0);
 scene.add(torus3);
 
 const geometry4 = new THREE.TorusGeometry( 28, 3, 30, 100);
-// const material = new THREE.MeshBasicMaterial( { color: 0xFF6347, wireframe: true});
 const material4 = new THREE.MeshStandardMaterial( { color: 0x000033});
 material4.metalness = 1;
 material4.roughness = 0.4;
@@ -145,8 +142,8 @@ const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(ambientLight);
 
 // const lightHelper = new THREE.PointLightHelper(pointLight);
-const gridHelper = new THREE.GridHelper(200, 50);
-scene.add(gridHelper);
+// const gridHelper = new THREE.GridHelper(200, 50);
+// scene.add(gridHelper);
 // scene.add(lightHelper, gridHelper);
 
 const controls = new OrbitControls( camera, renderer.domElement);
