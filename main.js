@@ -6,14 +6,17 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { Mesh } from 'three';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
 import { TextGeometry } from 'three/addons/geometries/TextGeometry.js';
+import * as TWEEN from '@tweenjs/tween.js';
+import gsap from 'gsap';
 
 var camera;
 var scene;
 var renderer;
 var loader;
+var target = new THREE.Vector3(); 
 
 scene = new THREE.Scene();
-camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000);
+camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 1, 500);
 renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg'),
 });
@@ -127,7 +130,7 @@ const geometry = new THREE.TorusGeometry( 10, 3, 16, 100);
 // const material = new THREE.MeshBasicMaterial( { color: 0xFF6347, wireframe: true});
 const material = new THREE.MeshStandardMaterial( { color: 0xFF6347});
 const torus = new THREE.Mesh( geometry, material);
-
+torus.position.set(-10, 0, 0);
 scene.add(torus);
 
 const pointLight = new THREE.PointLight(0xffffff);
@@ -143,7 +146,7 @@ const gridHelper = new THREE.GridHelper(200, 50);
 scene.add(lightHelper, gridHelper);
 
 const controls = new OrbitControls( camera, renderer.domElement);
-
+controls.enableZoom = false;
 function addStar(){
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
   const material = new THREE.MeshStandardMaterial({ color: 0xffffff});
@@ -250,130 +253,21 @@ scene.add(textMesh);
 });
 
 
-// Move camera
-function moveCamera(){
-  const t = document.body.getBoundingClientRect().top;
-  moon.rotation.x += 0.05;
-  moon.rotation.y += 0.075;
-  moon.rotation.z += 0.05;
-  // moon.rotateZ(0.05);
-
-  reuben.rotation.y += 0.01;
-  reuben.rotation.z += 0.01;
-
-  camera.position.z = (t-10) * -0.01;
-  // camera.position.x = (t) * -0.02;
-  camera.position.y = 1;
-  // camera.position.y = (t) * -0.001;
-}
-document.body.onscroll = moveCamera;
-moveCamera();
-
-
-			// import * as THREE from 'three';
-			// import { TWEEN } from 'three/addons/libs/tween.module.min.js';
-			// import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
-			// import { CSS3DRenderer, CSS3DObject } from 'three/addons/renderers/CSS3DRenderer.js';
-
-			// const table = [
-			// 	'Reuben', 'Hydrogen', '1.00794', 1, 1
-			// ];
-
-			// // let camera, scene, renderer;
-			// let controls;
-
-			// const objects = [];
-			// const targets = { table: [], sphere: [], helix: [], grid: [] };
-
-			// // init();
-			// // animate();
-
-			// function init() {
-
-			// 	camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
-			// 	camera.position.z = 3000;
-
-			// 	scene = new THREE.Scene();
-
-			// 	// table
-
-			// 	for ( let i = 0; i < table.length; i += 5 ) {
-
-			// 		const element = document.createElement( 'div' );
-			// 		element.className = 'element';
-			// 		element.style.backgroundColor = 'rgba(0,127,127,' +  ')';
-
-			// 		const symbol = document.createElement( 'div' );
-			// 		symbol.className = 'symbol';
-			// 		symbol.textContent = table[ i ];
-			// 		element.appendChild( symbol );
-          
-			// 		const objectCSS = new CSS3DObject( element );
-			// 		objectCSS.position.x = - 20;
-			// 		// objectCSS.position.y = 4000 - 2000;
-			// 		objectCSS.position.z = 30;
-			// 		scene.add( objectCSS );
-
-			// 		objects.push( objectCSS );
-
-			// 		//
-
-			// 		const object = new THREE.Object3D();
-			// 		object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
-			// 		object.position.y = - ( table[ i + 4 ] * 180 ) + 990;
-
-
-			// 		targets.table.push( object );
-
-			// 	}
-
-			// 	//
-			// 	renderer1 = new CSS3DRenderer();
-
-			// 	document.getElementById( 'container' ).appendChild( renderer1.domElement );
-
-			// 	//
-			// 	controls = new TrackballControls( camera, renderer1.domElement );
-			// 	controls.minDistance = 500;
-			// 	controls.maxDistance = 6000;
-			// 	controls.addEventListener( 'change', render );
-
-			// 	const buttonTable = document.getElementById( 'table' );
-
-				
-
-			// 	window.addEventListener( 'resize', onWindowResize );
-
-			// }
-
-			// function onWindowResize() {
-
-			// 	camera.aspect = window.innerWidth / window.innerHeight;
-			// 	camera.updateProjectionMatrix();
-
-			// 	renderer1.setSize( window.innerWidth, window.innerHeight );
-
-			// 	render();
-
-			// }
-
-			// function animate1() {
-
-			// 	requestAnimationFrame( animate );
-
-			// 	controls.update();
-
-			// }
-
-			// function render() {
-
-			// 	renderer1.render( scene, camera );
-
-			// }
+// // Move camera
+// function moveCamera(){
+//   const t = document.body.getBoundingClientRect().top;
+//   moon.rotation.x += 0.05; moon.rotation.y += 0.075; moon.rotation.z += 0.05;
+//   moon.rotateZ(0.05);
+//   reuben.rotation.y += 0.01; reuben.rotation.z += 0.01; camera.position.z = (t-10) * -0.01;
+//   camera.position.x = (t) * -0.02;
+// }
+// document.body.onscroll = moveCamera;
+// moveCamera();
 
 // Animated Moving Ring
 // renderer.render(scene, camera)
-function animate(){
+function animate(t){
+  TWEEN.update(t);
   requestAnimationFrame( animate );
 
   torus.rotation.x += 0.01;
@@ -387,51 +281,102 @@ function animate(){
 
 animate();
 
+let tweenTorus = new TWEEN.Tween({x:-10, y:0, z:0})
+.to({x:10, y:0, z:0}, 2000)
+.onUpdate((coords) => {
+	torus.position.x = coords.x;
+	torus.position.y = coords.y;
+	torus.position.z = coords.z;
+	console.log(coords.x, coords.y, coords.z);
+	// console.log( torus.getWorldPosition(target).x, torus.getWorldPosition(target).y, torus.getWorldPosition(target).z);
+	// console.log(torus.getWorldPosition(target).x);
+})
+.easing(TWEEN.Easing.Exponential.InOut);
+// tweenTorus.start();
 
-// document.querySelector('#app').innerHTML = `
-//   <div>
-//     <a href="https://vitejs.dev" target="_blank"><img src="/vite.svg" class="logo" alt="Vite logo" /></a>
-//     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" /></a>
-//     <h1>Hello Vite!</h1>
-//     <div class="card"><button id="counter" type="button"></button></div>
-//     <p class="read-the-docs">Click on the Vite logo to learn more</p>
-//   </div>
-// `
-// setupCounter(document.querySelector('#counter'))
+let tweenTorusR = new TWEEN.Tween({x:10, y:0, z:0})
+.to({x:-10, y:0, z:0}, 2000)
+.onUpdate((coords) => {
+	torus.position.x = coords.x;
+	torus.position.y = coords.y;
+	torus.position.z = coords.z;
+})
+.easing(TWEEN.Easing.Exponential.InOut);
 
+let cameraAngles = {
+	"one": [0, 10, 30],
+	"two": [10, 20, 30],
+	"three": [10, 20, 30],
+	"four": [20, 20, 30],
+	"five": [10, 20, 30],
+	"six": [10, 20, 30],
+	"seven": [10, 20, 30],
+	"eight": [10, 20, 30],
+}
 
-			// function init( ) {
+let cards = [];
+let arr = ["#one", "#two", "#three", "#four", "#five", "#six", "#seven", "#eight"];
+for(let i=0; i<8; i++){
+	cards.push(document.querySelector(arr[i]));
+}
 
-			// 	// camera.position.set( 0, - 400, 600 );
+// xf=torus.getWorldPosition(target).x; yf=torus.getWorldPosition(target).y; zf=torus.getWorldPosition(target).z;	
+// console.log(torus.getWorldPosition(target));
+// gsap.to(camera.position, { x: 10, duration: 1.5 })
+// camera.position.x = cameraAngles[entry.target.id][0]; camera.position.y = cameraAngles[entry.target.id][1]; camera.position.z = cameraAngles[entry.target.id][2];
+// console.log(entries);
+// gsap.to(camera.position, { x: 0,duration: 1.5 });
 
-			// 	renderer = new THREE.WebGLRenderer( { antialias: true } );
-			// 	renderer.setPixelRatio( window.devicePixelRatio );
-			// 	renderer.setSize( window.innerWidth, window.innerHeight );
-			// 	document.body.appendChild( renderer.domElement );
+const observer = new IntersectionObserver(entries =>{
+	entries.forEach(entry => {
 
-			// 	const controls = new OrbitControls( camera, renderer.domElement );
-			// 	controls.target.set( 0, 0, 0 );
-			// 	controls.update();
+		if(entry.target.id === "one"){
+			if(entry.isIntersecting){
+				tweenTorus.start();
+				controls.update();
+			}
+			else{
+				tweenTorusR.start();
+			}
+		}else if(entry.target.id === "two"){
+			
+		}else if(entry.target.id === "three"){
+			if(entry.isIntersecting){
+				tweenTorus.start();
+				controls.update();
+			}
+			else{
+				tweenTorusR.start();
+			}
+		}else if(entry.target.id === "four"){
 
-			// 	controls.addEventListener( 'change', render );
+		}else if(entry.target.id === "five"){
+			if(entry.isIntersecting){
+				tweenTorus.start();
+				controls.update();
+			}
+			else{
+				tweenTorusR.start();
+			}
+		}else if(entry.target.id === "six"){
 
-			// 	window.addEventListener( 'resize', onWindowResize );
+		}else if(entry.target.id === "seven"){
+			if(entry.isIntersecting){
+				tweenTorus.start();
+				controls.update();
+			}
+			else{
+				tweenTorusR.start();
+			}
+		}else{
 
-			// } // end init
+		}
+	})
+},
+{
+	threshold: 0.5,
+})
 
-			// function onWindowResize() {
-
-			// 	camera.aspect = window.innerWidth / window.innerHeight;
-			// 	camera.updateProjectionMatrix();
-
-			// 	renderer.setSize( window.innerWidth, window.innerHeight );
-
-			// 	render();
-
-			// }
-
-			// function render() {
-
-			// 	renderer.render( scene, camera );
-
-			// }
+for(let j=0; j<8; j++){
+	observer.observe(cards[j]);
+}
