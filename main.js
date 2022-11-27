@@ -78,7 +78,7 @@ function init() {
 renderer.setPixelRatio( window.devicePixelRatio);
 renderer.setSize( window.innerWidth, window.innerHeight); /* makes the renderer full screen */
 
-camera.position.setZ(50);
+camera.position.setZ(30);
 
 renderer.render(scene, camera);
 

@@ -48,7 +48,7 @@ canvas {
   }
 
   section {
-    width: 40%;
+    width: 60%;
     color: white;
     padding: 1rem;
     position: relative;
@@ -196,27 +196,32 @@ canvas {
 
 } */
 #two{
-  margin-left: 55%;
+  margin-left: 35%;
 }
 #three{
-  
+  width: 85%;
+  margin: 0 auto;
 }
 #four{
-  margin-left: 55%;
+  margin-left: 35%;
 }
 #five{
   
 }
 #six{
-  margin-left: 55%;
+  margin-left: 35%;
 }
 #seven{
   
 }
 #eight{
-  margin-left: 55%;
+  margin-left: 35%;
 }
 
 label{
   display: block;
+}
+
+fieldset{
+  border: 0;
 }
