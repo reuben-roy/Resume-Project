@@ -305,8 +305,8 @@ function animate(t){
 
 animate();
 
-let tweenTorus = new TWEEN.Tween({x:-15, y:0, z:0})
-.to({x:15, y:0, z:0}, 2000)
+let tweenTorus = new TWEEN.Tween({x:-20, y:0, z:0})
+.to({x:20, y:0, z:0}, 500)
 .onUpdate((coords) => {
 	torus.position.x = coords.x;
 	torus2.position.x = coords.x;
@@ -324,11 +324,11 @@ let tweenTorus = new TWEEN.Tween({x:-15, y:0, z:0})
 	// console.log( torus.getWorldPosition(target).x, torus.getWorldPosition(target).y, torus.getWorldPosition(target).z);
 	// console.log(torus.getWorldPosition(target).x);
 })
-.easing(TWEEN.Easing.Exponential.InOut);
+.easing(TWEEN.Easing.Linear.None);
 // tweenTorus.start();
 
-let tweenTorusR = new TWEEN.Tween({x:15, y:0, z:0})
-.to({x:-15, y:0, z:0}, 2000)
+let tweenTorusR = new TWEEN.Tween({x:20, y:0, z:0})
+.to({x:-20, y:0, z:0}, 500)
 .onUpdate((coords) => {
 	torus.position.x = coords.x;
 	torus2.position.x = coords.x;
@@ -343,7 +343,7 @@ let tweenTorusR = new TWEEN.Tween({x:15, y:0, z:0})
 	torus3.position.z = coords.z;
 	torus4.position.z = coords.z;
 })
-.easing(TWEEN.Easing.Exponential.InOut);
+.easing(TWEEN.Easing.Linear.None);
 
 let cameraAngles = {
 	"one": [0, 10, 30],
