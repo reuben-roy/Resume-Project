@@ -5,47 +5,43 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resume Project</title>
-    <script type="module" crossorigin src="/assets/index.ef6c79fb.js"></script>
-    <link rel="stylesheet" href="/assets/index.93b14652.css">
+    <script>
+      function toggleSection(sectionId) {
+        var section = document.getElementById(sectionId);
+        if (section.style.display === "none") {
+          section.style.display = "block";
+        } else {
+          section.style.display = "none";
+        }
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/index.8c7d181b.js"></script>
+    <link rel="stylesheet" href="/assets/index.e9c59161.css">
   </head>
   <body>
     <canvas id="bg"></canvas>
     <div id="app"></div>
 
     <main>
-      <h1
-        style="
-          color: red;
-          position: relative;
-          display: flex;
-          z-index: 1;
-          width: 100%;
-          align-items: center;
-          justify-content: center;
-        "
-      >
-        Warning: Might look extra bad on Mobile<br />This will be handled
-        later.. at some point
-      </h1>
       <section id="one">
         <header>
           <h1>Reuben Roy</h1>
-          <p>FullStack | NIT Calicut</p>
-          <p>Welcome to my resume website attempt 1!</p>
-          <p>
-            This is my mediocre attempt at telling you why you should hire me
-          </p>
+          <p id="designation"></p>
+          <p id="intro1"></p>
+          <p id="intro2"></p>
         </header>
       </section>
 
       <section id="two">
         <blockquote>
           <p>I like doing creative stuff</p>
+          <br />
+          <br />
         </blockquote>
       </section>
 
       <section id="three">
-        <h2 style="margin: 0 auto"><u>Skills::</u></h2>
+        <h2 style="text-align: center"><u>Skills::</u></h2>
 
         <section
           style="
@@ -54,12 +50,14 @@
             justify-content: center;
             width: 85%;
           "
+          onclick="toggleSection('three')"
         >
           <fieldset>
             <h3>Version Control</h3>
             <ul>
               <li>Git</li>
               <li>Github</li>
+              <li>BitBucket</li>
             </ul>
           </fieldset>
 
@@ -127,10 +125,10 @@
           </fieldset>
 
           <fieldset>
-            <h3>Wordpress</h3>
+            <h3>CMS</h3>
             <ul>
-              <li>CMS</li>
-              <li>Hostinger</li>
+              <li>Sanity</li>
+              <li>Wordpress</li>
             </ul>
           </fieldset>
 
@@ -147,38 +145,30 @@
       </section>
 
       <section id="four">
-        <h2>📜 Manifesto</h2>
-        <p>
-          I want to learn more and make cool things<br />
-          And I wanna do it real fast
-        </p>
+        <blockquote>
+          <h2>📜 Manifesto</h2>
+          <p id="manifestol1"></p>
+          <br />
+          <p id="manifestol2"></p>
+        </blockquote>
       </section>
 
       <section class="light" id="five">
         <u><h2>👩🏽‍🚀 Projects</h2></u>
 
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-
-        <u><h2>🏆 Accomplishments</h2></u>
+        <!-- <u><h2>🏆 Accomplishments</h2></u>
         <ul>
           <li>
             Automated Postman Auth Token injection making use of Postman
             variables to reduce BackEnd development time for all team members
           </li>
-        </ul>
+        </ul> -->
 
         <h2>🏆 Certifications And Workshops</h2>
         <label
           ><a
             href="https://www.freecodecamp.org/certification/ReubenRoy/javascript-algorithms-and-data-structures"
+            target="_blank"
             >JavaScript Algorithms and Data Structures</a
           >
           - freeCodeCamp.org</label
@@ -186,6 +176,7 @@
         <label
           ><a
             href="https://www.freecodecamp.org/certification/ReubenRoy/responsive-web-design"
+            target="_blank"
             >Responsive Web Design</a
           >
           - freeCodeCamp.org</label
@@ -193,6 +184,7 @@
         <label
           ><a
             href="https://www.coursera.org/account/accomplishments/certificate/PP9R2W2SGRXH"
+            target="_blank"
             >Introduction to Data Science in Python</a
           >
           - University of Michigan & Coursera</label
@@ -200,6 +192,7 @@
         <label
           ><a
             href="https://drive.google.com/file/d/1-dm9rRxr2olYYuFQeU1J7owzvZSl3wUa/view?usp=sharing"
+            target="_blank"
             >Google AI|Explore ML Workshop</a
           >
           - Google</label
@@ -245,20 +238,27 @@
         </p>
       </section>
 
-      <section id="eight">
+      <!-- <section id="eight">
         <h2>Previous Web Projects</h2>
+        <hr />
         <h3>Sajith and Sujith Website</h3>
         <iframe
+          class="frame"
           src="https://sajithandsujith.com/"
-          width="850"
-          height="600"
+          height="600px"
+          width="100%"
         ></iframe>
-      </section>
-
-      <section id="nine">
+        <hr />
         <h3>Natura Bags Website</h3>
-        <iframe src="https://naturabags.com/" width="850" height="600"></iframe>
-      </section>
+        <iframe
+          class="frame"
+          src="https://naturabags.com/"
+          height="600px"
+          width="100%"
+        ></iframe>
+      </section> -->
+
+      <section id="nine"></section>
 
       <section id="ten">
         <blockquote>

@@ -1,4 +1,4 @@
-canvas{
+canvas {
   position: fixed;
   top: 0;
   left: 0;
@@ -6,12 +6,12 @@ canvas{
 }
 
 .info {
-	position: absolute;
-	top: 10px;
-	width: 100%;
-	text-align: center;
-	z-index: 50;
-	display:block;
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  text-align: center;
+  z-index: 50;
+  display: block;
 }
 
 :root {
@@ -25,12 +25,21 @@ canvas{
 
 main {
   z-index: 1;
+  width: auto;
 }
 
-h1, h2, h3, blockquote {
+h1,
+h2,
+h3,
+blockquote,
+p,
+ol,
+ul {
   font-family: elevon, sans-serif;
   font-weight: 700;
   font-style: normal;
+  mix-blend-mode: exclusion;
+  text-shadow: 2px 2px 100px rgba(0, 0, 0, 1);
 }
 
 canvas {
@@ -39,152 +48,70 @@ canvas {
   left: 0;
 }
 
-  header {
-    background: var(--dark-bg);
-    grid-column: 2 / span 5;
-    font-size: 2.5rem;
-    padding: 2rem;
-    /* margin-bottom: var(--spacing); */
-  }
+header {
+  /* background: var(--dark-bg); */
+  grid-column: 2 / span 5;
+  font-size: 2.5rem;
+  padding: 2rem;
+  /* margin-bottom: var(--spacing); */
+}
 
-  section {
-    width: 60%;
-    color: white;
-    padding: 1rem;
-    position: relative;
-    background: var(--dark-bg);
-    font-size: 1.25rem;
-    line-height: 1.5;
-    margin-bottom: var(--spacing);
-    margin: 2rem 2rem;
-    height: auto;
-  }
+section {
+  width: 60%;
+  color: white;
+  padding: 1rem;
+  position: relative;
+  /* background: var(--dark-bg); */
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: var(--spacing);
+  margin: 2rem 2rem;
+}
 
-  blockquote {
-    margin: 0;
-    padding: 0;
-    grid-column: 2 / span 9;
-  }
+blockquote {
+  margin: 0;
+  padding: 0;
+  grid-column: 2 / span 9;
+}
 
-  blockquote p {
-    color: black;
-    background-color: white;
-    font-size: 4rem;
-    display: inline;
-    line-height: 1;
-  }
+blockquote p {
+  font-size: 4rem;
+  display: inline;
+  line-height: 1;
+}
 
-  .left {
-    grid-column: 6 / 12;
-  }
+.left {
+  grid-column: 6 / 12;
+}
 
-  a {
-				color: #8ff;
-			}
+a {
+  color: #8ff;
+}
 
-			#menu {
-				position: absolute;
-				bottom: 20px;
-				width: 100%;
-				text-align: center;
-			}
+#menu {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
 
-			.element {
-				width: 120px;
-				height: 160px;
-				box-shadow: 0px 0px 12px rgba(0,255,255,0.5);
-				border: 1px solid rgba(127,255,255,0.25);
-				font-family: Helvetica, sans-serif;
-				text-align: center;
-				line-height: normal;
-				cursor: default;
-			}
-
-			.element:hover {
-				box-shadow: 0px 0px 12px rgba(0,255,255,0.75);
-				border: 1px solid rgba(127,255,255,0.75);
-			}
-
-				.element .number {
-					position: absolute;
-					top: 20px;
-					right: 20px;
-					font-size: 12px;
-					color: rgba(127,255,255,0.75);
-				}
-
-				.element .symbol {
-					position: absolute;
-					top: 40px;
-					left: 0px;
-					right: 0px;
-					font-size: 60px;
-					font-weight: bold;
-					color: rgba(255,255,255,0.75);
-					text-shadow: 0 0 10px rgba(0,255,255,0.95);
-				}
-
-				.element .details {
-					position: absolute;
-					bottom: 15px;
-					left: 0px;
-					right: 0px;
-					font-size: 12px;
-					color: rgba(127,255,255,0.75);
-				}
-
-			button {
-				color: rgba(127,255,255,0.75);
-				background: transparent;
-				outline: 1px solid rgba(127,255,255,0.75);
-				border: 0px;
-				padding: 5px 10px;
-				cursor: pointer;
-			}
-
-			button:hover {
-				background-color: rgba(0,255,255,0.5);
-			}
-
-			button:active {
-				color: #000000;
-				background-color: rgba(0,255,255,0.75);
-			}
-
-/* a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}a:hover {
-  color: #535bf2;
-}.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+button {
+  color: rgba(127, 255, 255, 0.75);
+  background: transparent;
+  outline: 1px solid rgba(127, 255, 255, 0.75);
+  border: 0px;
+  padding: 5px 10px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }a:hover {
-    color: #747bff;
-  }button {
-    background-color: #f9f9f9;
-  }
-} */
+}
+
+button:hover {
+  background-color: rgba(0, 255, 255, 0.5);
+}
+
+button:active {
+  color: #000000;
+  background-color: rgba(0, 255, 255, 0.75);
+}
 
 @media (prefers-reduced-motion: no-preference) {
   * {
@@ -192,36 +119,68 @@ canvas {
   }
 }
 
-/* #one{
-
-} */
-#two{
-  margin-left: 35%;
+#two {
+  /* margin-left: 35%; */
+  text-align: center;
+  margin: 0 auto;
 }
-#three{
+#three {
   width: 85%;
   margin: 0 auto;
 }
-#four{
-  margin-left: 35%;
+#four {
+  margin: 0 auto;
+  text-align: center;
 }
-#five{
-  
+#six {
+  text-align: center;
+  margin: 0 auto;
 }
-#six{
-  margin-left: 35%;
+#eight {
+  width: 85%;
+  margin: 0 auto;
+  text-align: center;
 }
-#seven{
-  
+#nine {
+  width: 85%;
+  margin: 0 auto;
+  height: 200%;
 }
-#eight{
-  margin-left: 35%;
+#ten {
+  text-align: center;
+  margin: 0 auto;
 }
 
-label{
+label {
   display: block;
 }
 
-fieldset{
+fieldset {
   border: 0;
+}
+
+@media screen and (max-width: 768px) {
+  /* Adjust the font size and spacing for smaller screens */
+  :root {
+    --spacing: 50px;
+    font-size: 16px;
+  }
+
+  /* Make the header take up the full width of the screen */
+  header {
+    grid-column: 1 / -1;
+  }
+
+  /* Adjust the width of the section and move it down below the header */
+  /* section {
+    width: 100%;
+    margin-top: var(--spacing);
+    margin-bottom: 0;
+  } */
+
+  /* Center the blockquote */
+  blockquote {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
 }
