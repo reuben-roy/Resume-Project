@@ -1,5 +1,4 @@
 import "./style.css";
-import javascriptLogo from "./javascript.svg";
 import { setupCounter } from "./counter.js";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -10,12 +9,12 @@ import * as TWEEN from "@tweenjs/tween.js";
 import gsap from "gsap";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
+import { typeText } from "./components/textTyper.js"
 
 var camera;
 var scene;
 var renderer;
 var loader;
-// var target = new THREE.Vector3();
 
 scene = new THREE.Scene();
 camera = new THREE.PerspectiveCamera(
@@ -27,12 +26,6 @@ camera = new THREE.PerspectiveCamera(
 renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#bg"),
 });
-
-// const iframe = document.getElementsByClassName("frame");
-// [...iframe].forEach((x) => {
-//   x.width = window.innerWidth * 0.8;
-//   x.height = window.innerHeight * 0.8;
-// });
 
 const headers = new Headers({
   "x-api-user": import.meta.env["VITE_USER_ID"],
@@ -74,8 +67,6 @@ fetch('https://habitica.com/api/v3/user', {
     <h6 class="flex-col3">${userData.data.stats.mp.toFixed(1) + "/" + userData.data.stats.maxMP}</h6>`
     document.getElementById("lastUpdate").innerHTML = `<h6 class="flex-col1">Stats last logged in on: ${userData.data.auth.timestamps.loggedin.slice(0, 10)}</h6>`
     document.getElementById("streak").innerHTML = `<h6 class="flex-col1">Streak: ${userData.data.achievements.streak}</h6>`
-
-
   })
   .catch((error) => {
     console.error(error);
@@ -92,56 +83,6 @@ function init() {
   renderer = new THREE.WebGLRenderer({
     canvas: document.querySelector("#bg"),
   });
-
-  //  loader = new FontLoader();
-  //  loader.load( 'fonts/helvetiker_regular.typeface.json', function ( font ) {
-  // 	const color = 0xffffff;
-  // 	const matDark = new THREE.LineBasicMaterial( { color: color, side: THREE.DoubleSide } );
-  //  const matLite = new THREE.MeshBasicMaterial( { color: color, transparent: false, opacity: 1,side: THREE.DoubleSide } );
-  // 	const message = '   Three.js\nSimple text.\nSimple text.\nSimple text.\nSimple text.\nSimple text.';
-  // 	const shapes = font.generateShapes( message, 100 );
-  // 	const geometry = new THREE.ShapeGeometry( shapes );
-  // 	geometry.computeBoundingBox();
-  // 	const xMid = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
-  // 	geometry.translate( xMid, 0, 0 );
-  // 	// make shape ( N.B. edge view not visible )
-  //  const text = new THREE.Mesh( geometry, matLite );
-  //  text.position.z = 10; text.position.x = 20; text.position.y = 10;
-  //  scene.add( text );
-  // 	// make line shape ( N.B. edge view remains visible )
-  //  const holeShapes = [];
-  //  for ( let i = 0; i < shapes.length; i ++ ) {
-  // 	const shape = shapes[ i ];
-  // 	if ( shape.holes && shape.holes.length > 0 ) {
-  // 		for ( let j = 0; j < shape.holes.length; j ++ ) {
-  // const hole = shape.holes[ j ]; holeShapes.push( hole );
-  // 		}
-  // 	}
-  // }
-
-  // 	shapes.push.apply( shapes, holeShapes );
-  // 	const lineText = new THREE.Object3D();
-  // 	for ( let i = 0; i < shapes.length; i ++ ) {
-  // 		const shape = shapes[ i ];
-  // 		const points = shape.getPoints();
-  // 		const geometry = new THREE.BufferGeometry().setFromPoints( points );
-  // 		geometry.translate( xMid, 0, 0 );
-  // 		const lineMesh = new THREE.Line( geometry, matDark );
-  // 		lineText.add( lineMesh );
-  // 	}
-  // 	scene.add( lineText );
-  // 	renderer.render();
-  // } ); //end load function
-}
-
-function toggleSections() {
-  console.log("three");
-  //   var section = document.getElementById(sectionId);
-  //   if (section.style.display === "none") {
-  //     section.style.display = "block";
-  //   } else {
-  //     section.style.display = "none";
-  //   }
 }
 
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -213,11 +154,6 @@ scene.add(pointLight3);
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(ambientLight);
 
-// const lightHelper = new THREE.PointLightHelper(pointLight);
-// const gridHelper = new THREE.GridHelper(200, 50);
-// scene.add(gridHelper);
-// scene.add(lightHelper, gridHelper);
-
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableZoom = false;
 function addStar() {
@@ -238,60 +174,6 @@ const spaceTexture = new THREE.TextureLoader().load(
 );
 scene.background = spaceTexture;
 
-// const reubenTexture = new THREE.TextureLoader().load('reuben.jpg');
-// const reuben = new THREE.Mesh(
-//   new THREE.BoxGeometry(3,3,3),
-//   new THREE.MeshBasicMaterial({map: reubenTexture})
-// );
-// reuben.position.set(20, 10, 10);
-// scene.add(reuben);
-
-// Moon
-// const moonTexture = new THREE.TextureLoader().load('moon.jpg');
-// const normalTexture = new THREE.TextureLoader().load('normal.jpg');
-// const moon = new Mesh(
-//   new THREE.SphereGeometry(3,32,32),
-//   new THREE.MeshStandardMaterial({
-//     map: moonTexture,
-//     normalMap: normalTexture
-//   })
-// );
-// scene.add(moon);
-// moon.position.z = 30;
-// moon.position.setX(-10);
-
-// const message = '   Three.js\nSimple text.\nSimple text.\nSimple text.\nSimple text.\nSimple text.';
-// const shapes = font.generateShapes( message, 100 );
-// const geometry = new THREE.ShapeGeometry( shapes );
-
-// const assetLoader = new GLTFLoader();
-// const rgbeLoader = new RGBELoader();
-// renderer.outputEncoding = THREE.sRGBEncoding;
-// renderer.toneMapping = THREE.ACESFilmicToneMapping;
-// renderer.toneMappingExposure = 4;
-
-// rgbeLoader.load('MR_INT-005_WhiteNeons_NAD.hdr', function(texture){
-// 	texture.mapping = THREE.EquirectangularReflectionMapping;
-// 	scene.environment = texture;
-
-// 	// assetLoader.load(bodyChanUrl.href, function(gltf){
-// 	// 	const model = gltf.scene;
-// 	// 	model.position.set(20, 0, 0);
-// 	// 	scene.add(model);
-// 	// }, undefined, function(error){
-// 	// 	console.error(error);
-// 	// });
-// });
-// let model;
-// assetLoader.load(hornGuy.href, function(gltf){
-// 	model = gltf.scene;
-// 	model.position.set(20, 0, 5);
-// 	model.scale.setLength(0.2);
-// 	scene.add(model);
-// }, undefined, function(error){
-// 	console.error(error);
-// });
-
 loader = new FontLoader();
 loader.load("./fonts/Times New Roman Cyr_Regular.json", function (font) {
   const geometry = new TextGeometry("Hi! \nHow are you?", {
@@ -300,19 +182,6 @@ loader.load("./fonts/Times New Roman Cyr_Regular.json", function (font) {
     height: 2,
   });
 
-  // const techlang = new TextGeometry("Technologies/Languages::\nSpring Boot/Java\nPostgreSQL\nMicroservices/REST API\nMockito\nMaven\nPython3\nRedis\nCMS\nReactJS\nThreeJs\nNodeJS\nJavaScript\nHTML/CSS/Bootstrap/MUI", {
-  // 	font: font, size: 1, height: 1,
-  // });
-  // const techlangMesh = new THREE.Mesh(techlang, [
-  // 	new THREE.MeshPhongMaterial({ color: 0xffffff }), // front
-  // 	new THREE.MeshPhongMaterial({ color: 0x000000 }) //side
-  // ]);
-  // techlangMesh.position.x = -70; techlangMesh.position.y = 30; techlangMesh.position.z = -30; techlangMesh.rotation.y = 3.14/4;
-  // scene.add(techlangMesh);
-  // const tools = new TextGeometry("Tools/Methodologies::\nIntelliJ IDEA/Visual Studio Code\nDBeaver\nGit/GitHub\nRESTful services\nPostman\nOpenAPI/ Swagger\nSonarQube\nGithub Actions DevOps\nJira Boards/ Kanban Boards\nConfluence/ Service Now\nTerminal/Bash/CLI\nDocker\nHeroku/RailwayApp", {
-  // font: font, size: 1, height: 1,
-  // });
-
   const toolsMesh = new THREE.Mesh(tools, [
     new THREE.MeshPhongMaterial({ color: 0xffffff }), // front
     new THREE.MeshPhongMaterial({ color: 0x000000 }), //side
@@ -320,16 +189,6 @@ loader.load("./fonts/Times New Roman Cyr_Regular.json", function (font) {
   toolsMesh.position.y = 30;
   toolsMesh.position.z = -30;
   scene.add(toolsMesh);
-
-  // const welcome = new TextGeometry("Hi there!\nWelcome to mediocre my Resume", {
-  // 	font: font,	size: 6, height: 2,
-  // });
-  // const welcomeMesh = new THREE.Mesh(welcome, [
-  // 	new THREE.MeshPhongMaterial({ color: 0xffffff }), new THREE.MeshPhongMaterial({ color: 0x000000 }) //side
-  // ]);
-  // welcomeMesh.position.x = 0; welcomeMesh.position.y = 0;
-  // welcomeMesh.position.z = -10; welcomeMesh.rotation.x = -3.14/2;
-  // scene.add(welcomeMesh);
 
   const textMesh = new THREE.Mesh(geometry, [
     new THREE.MeshPhongMaterial({ color: 0xfffff }), // front
@@ -342,17 +201,6 @@ loader.load("./fonts/Times New Roman Cyr_Regular.json", function (font) {
 
   scene.add(textMesh);
 });
-
-// // Move camera
-// function moveCamera(){
-//   const t = document.body.getBoundingClientRect().top;
-//   moon.rotation.x += 0.05; moon.rotation.y += 0.075; moon.rotation.z += 0.05;
-//   moon.rotateZ(0.05);
-//   reuben.rotation.y += 0.01; reuben.rotation.z += 0.01; camera.position.z = (t-10) * -0.01;
-//   camera.position.x = (t) * -0.02;
-// }
-// document.body.onscroll = moveCamera;
-// moveCamera();
 
 // Animated Moving Ring
 // renderer.render(scene, camera)
@@ -434,6 +282,7 @@ let cameraAngles = {
 let cards = [];
 let arr = [
   "#one",
+  '#spotify',
   "#two",
   "#three",
   "#four",
@@ -489,27 +338,10 @@ const observer = new IntersectionObserver(
   }
 );
 
-function typeText(text, elementId, delay, type) {
-  var i = 0;
-  var element = document.getElementById(elementId);
-  switch (type) {
-    case "string":
-      var intervalId = setInterval(function () {
-        // element.textContent += text.charAt(i);
-        element.innerHTML += text.charAt(i);
-        i++;
-        if (i > text.length) {
-          clearInterval(intervalId);
-        }
-      }, delay);
-      break;
-  }
-}
-
 typeText("FullStack | NIT Calicut", "designation", 100, "string");
-typeText("Welcome to my resume website attempt 1!", "intro1", 100, "string");
+typeText("Welcome to my random crappy unresponsive, unfinished website", "intro1", 100, "string");
 typeText(
-  "This is my mediocre attempt at telling you why you should hire me",
+  "Below you can find my spotify. I added it here for absolutely no ducking reason",
   "intro2",
   100,
   "string"
@@ -521,33 +353,3 @@ typeText(
   "string"
 );
 typeText("And I wanna do it real fast", "manifestol2", 100, "string");
-
-// function typeWriter(line, elementId1, index = 0) {
-//   // if (index >= lines.length) {
-//   //   return;
-//   // }
-
-//   // const line = lines[index];
-//   const speed = 50; // Adjust this value to change the typing speed
-//   const container = document.getElementById("five");
-
-//   // Print each character of the line with a delay
-//   for (let i = 0; i < line.length; i++) {
-//     setTimeout(() => {
-//       container.innerHTML += line.charAt(i);
-//     }, i * speed);
-//   }
-// }
-
-// // Example usage
-// const lines = [
-//   "This is the first line",
-//   "This is the second line",
-//   "This is the third line",
-// ];
-
-// typeWriter(lines, "five");
-
-// for (let j = 0; j < 8; j++) {
-//   observer.observe(cards[j]);
-// }
