@@ -11,6 +11,9 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import { typeText } from "./components/textTyper.js";
 import { fetchAndDisplayHabiticaUser } from './components/habiticaUser.js';
+import { createStars } from './components/ThreeJsComponents/stars.js';
+import { addLights } from "./components/ThreeJsComponents/lights.js";
+import { addToruses } from "./components/ThreeJsComponents/toruses.js";
 
 var camera;
 var scene;
@@ -34,7 +37,7 @@ const headers = new Headers({
 });
 
 // Uncomment to render habitica component
-// fetchAndDisplayHabiticaUser(headers);
+fetchAndDisplayHabiticaUser(headers);
 
 function init() {
   scene = new THREE.Scene();
@@ -66,171 +69,29 @@ function onResize() {
 }
 window.addEventListener("resize", onResize, false);
 
-const geometry = new THREE.TorusGeometry(10, 3, 30, 100);
-// const material = new THREE.MeshBasicMaterial( { color: 0xFF6347, wireframe: true});
-const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
-material.metalness = 1;
-material.roughness = 0.4;
-material.flatShading = true;
-const torus = new THREE.Mesh(geometry, material);
-torus.position.set(-10, 0, 0);
-scene.add(torus);
-
-const geometry2 = new THREE.TorusGeometry(16, 3, 30, 100);
-const material2 = new THREE.MeshStandardMaterial({ color: 0x696969 });
-material2.metalness = 1;
-material2.roughness = 0.4;
-material2.flatShading = true;
-const torus2 = new THREE.Mesh(geometry2, material2);
-torus2.position.set(-10, 0, 0);
-scene.add(torus2);
-
-const geometry3 = new THREE.TorusGeometry(22, 3, 30, 100);
-const material3 = new THREE.MeshStandardMaterial({ color: 0x66b3ff });
-material3.metalness = 1;
-material3.roughness = 0.4;
-material3.flatShading = true;
-const torus3 = new THREE.Mesh(geometry3, material3);
-torus3.position.set(-10, 0, 0);
-scene.add(torus3);
-
-const geometry4 = new THREE.TorusGeometry(28, 3, 30, 100);
-const material4 = new THREE.MeshStandardMaterial({ color: 0x000033 });
-material4.metalness = 1;
-material4.roughness = 0.4;
-material4.flatShading = true;
-const torus4 = new THREE.Mesh(geometry4, material4);
-torus4.position.set(-10, 0, 0);
-scene.add(torus4);
-
-const pointLight = new THREE.PointLight(0xffffff);
-pointLight.position.set(0, 0, 60);
-scene.add(pointLight);
-
-const pointLight2 = new THREE.PointLight(0xff0000);
-pointLight2.position.set(0, 0, 0);
-scene.add(pointLight2);
-
-const pointLight3 = new THREE.PointLight(0x0000ff);
-pointLight3.position.set(40, 0, 10);
-scene.add(pointLight3);
-
-const ambientLight = new THREE.AmbientLight(0xffffff);
-scene.add(ambientLight);
+addToruses(scene);
+addLights(scene);
+createStars(scene, 200);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableZoom = false;
-function addStar() {
-  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
-  const star = new THREE.Mesh(geometry, material);
-
-  const [x, y, z] = Array(3)
-    .fill()
-    .map(() => THREE.MathUtils.randFloatSpread(100));
-  star.position.set(x, y, z);
-  scene.add(star);
-}
-Array(200).fill().forEach(addStar);
 
 const spaceTexture = new THREE.TextureLoader().load(
   "https://images.pexels.com/photos/1341279/pexels-photo-1341279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
 );
 scene.background = spaceTexture;
 
-loader = new FontLoader();
-loader.load("./fonts/Times New Roman Cyr_Regular.json", function (font) {
-  const geometry = new TextGeometry("Hi! \nHow are you?", {
-    font: font,
-    size: 6,
-    height: 2,
-  });
-
-  const toolsMesh = new THREE.Mesh(tools, [
-    new THREE.MeshPhongMaterial({ color: 0xffffff }), // front
-    new THREE.MeshPhongMaterial({ color: 0x000000 }), //side
-  ]);
-  toolsMesh.position.y = 30;
-  toolsMesh.position.z = -30;
-  scene.add(toolsMesh);
-
-  const textMesh = new THREE.Mesh(geometry, [
-    new THREE.MeshPhongMaterial({ color: 0xfffff }), // front
-    new THREE.MeshPhongMaterial({ color: 0x5c2301 }), //side
-  ]);
-
-  textMesh.position.x = 0;
-  textMesh.position.y = 0;
-  textMesh.position.z = 0;
-
-  scene.add(textMesh);
-});
-
 // Animated Moving Ring
 // renderer.render(scene, camera)
 function animate(t) {
   TWEEN.update(t);
   requestAnimationFrame(animate);
-
-  torus.rotation.x += 0.01;
-  torus2.rotation.x -= 0.02;
-  torus3.rotation.x += 0.01;
-  torus4.rotation.x -= 0.005;
-  torus.rotation.y += 0.005;
-  torus2.rotation.y -= 0.005;
-  torus3.rotation.y += 0.001;
-  torus4.rotation.y -= 0.01;
-  torus.rotation.z += 0.01;
-  torus2.rotation.z -= 0.05;
-  torus3.rotation.z += 0.01;
-  torus4.rotation.z -= 0.03;
-
   controls.update();
 
   renderer.render(scene, camera);
 }
 
 animate();
-
-let tweenTorus = new TWEEN.Tween({ x: -20, y: 0, z: 0 })
-  .to({ x: 20, y: 0, z: 0 }, 500)
-  .onUpdate((coords) => {
-    torus.position.x = coords.x;
-    torus2.position.x = coords.x;
-    torus3.position.x = coords.x;
-    torus4.position.x = coords.x;
-    torus.position.y = coords.y;
-    torus2.position.y = coords.y;
-    torus3.position.y = coords.y;
-    torus4.position.y = coords.y;
-    torus.position.z = coords.z;
-    torus2.position.z = coords.z;
-    torus3.position.z = coords.z;
-    torus4.position.z = coords.z;
-    console.log(coords.x, coords.y, coords.z);
-    // console.log( torus.getWorldPosition(target).x, torus.getWorldPosition(target).y, torus.getWorldPosition(target).z);
-    // console.log(torus.getWorldPosition(target).x);
-  })
-  .easing(TWEEN.Easing.Linear.None);
-// tweenTorus.start();
-
-let tweenTorusR = new TWEEN.Tween({ x: 20, y: 0, z: 0 })
-  .to({ x: -20, y: 0, z: 0 }, 500)
-  .onUpdate((coords) => {
-    torus.position.x = coords.x;
-    torus2.position.x = coords.x;
-    torus3.position.x = coords.x;
-    torus4.position.x = coords.x;
-    torus.position.y = coords.y;
-    torus2.position.y = coords.y;
-    torus3.position.y = coords.y;
-    torus4.position.y = coords.y;
-    torus.position.z = coords.z;
-    torus2.position.z = coords.z;
-    torus3.position.z = coords.z;
-    torus4.position.z = coords.z;
-  })
-  .easing(TWEEN.Easing.Linear.None);
 
 let cameraAngles = {
   one: [0, 10, 30],
