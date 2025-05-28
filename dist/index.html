@@ -2,9 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resume Project</title>
+
+    <link rel="preload" href="data:application/javascript;base64,aW1wb3J0ICIuL3N0eWxlLmNzcyI7CmltcG9ydCAqIGFzIFRIUkVFIGZyb20gInRocmVlIjsKaW1wb3J0IHsgT3JiaXRDb250cm9scyB9IGZyb20gInRocmVlL2V4YW1wbGVzL2pzbS9jb250cm9scy9PcmJpdENvbnRyb2xzIjsKaW1wb3J0ICogYXMgVFdFRU4gZnJvbSAiQHR3ZWVuanMvdHdlZW4uanMiOwppbXBvcnQgeyB0eXBlVGV4dCB9IGZyb20gIi4vY29tcG9uZW50cy90ZXh0VHlwZXIuanMiOwppbXBvcnQgeyBmZXRjaEFuZERpc3BsYXlIYWJpdGljYVVzZXIgfSBmcm9tICcuL2NvbXBvbmVudHMvaGFiaXRpY2FVc2VyLmpzJzsKaW1wb3J0IHsgY3JlYXRlU3RhcnMgfSBmcm9tICcuL2NvbXBvbmVudHMvVGhyZWVKc0NvbXBvbmVudHMvc3RhcnMuanMnOwppbXBvcnQgeyBhZGRMaWdodHMgfSBmcm9tICIuL2NvbXBvbmVudHMvVGhyZWVKc0NvbXBvbmVudHMvbGlnaHRzLmpzIjsKaW1wb3J0IHsgYWRkVG9ydXNlcyB9IGZyb20gIi4vY29tcG9uZW50cy9UaHJlZUpzQ29tcG9uZW50cy90b3J1c2VzLmpzIjsKCnZhciBjYW1lcmE7CnZhciBzY2VuZTsKdmFyIHJlbmRlcmVyOwoKc2NlbmUgPSBuZXcgVEhSRUUuU2NlbmUoKTsKY2FtZXJhID0gbmV3IFRIUkVFLlBlcnNwZWN0aXZlQ2FtZXJhKAogIDc1LAogIHdpbmRvdy5pbm5lcldpZHRoIC8gd2luZG93LmlubmVySGVpZ2h0LAogIDAuMSwKICAxMDAwCik7CnJlbmRlcmVyID0gbmV3IFRIUkVFLldlYkdMUmVuZGVyZXIoewogIGNhbnZhczogZG9jdW1lbnQucXVlcnlTZWxlY3RvcigiI2JnIiksCn0pOwoKY29uc3QgaGVhZGVycyA9IG5ldyBIZWFkZXJzKHsKICAieC1hcGktdXNlciI6IGltcG9ydC5tZXRhLmVudlsiVklURV9VU0VSX0lEIl0sCiAgIngtYXBpLWtleSI6IGltcG9ydC5tZXRhLmVudlsiVklURV9BUElfS0VZIl0sCn0pOwoKLy8gVW5jb21tZW50IHRvIHJlbmRlciBoYWJpdGljYSBjb21wb25lbnQKZmV0Y2hBbmREaXNwbGF5SGFiaXRpY2FVc2VyKGhlYWRlcnMpOwoKCnJlbmRlcmVyLnNldFBpeGVsUmF0aW8od2luZG93LmRldmljZVBpeGVsUmF0aW8pOwpyZW5kZXJlci5zZXRTaXplKAogIHdpbmRvdy5pbm5lcldpZHRoLAogIHdpbmRvdy5pbm5lckhlaWdodAopOyAvKiBtYWtlcyB0aGUgcmVuZGVyZXIgZnVsbCBzY3JlZW4gKi8KCmNhbWVyYS5wb3NpdGlvbi5zZXRaKDMwKTsKCnJlbmRlcmVyLnJlbmRlcihzY2VuZSwgY2FtZXJhKTsKCmZ1bmN0aW9uIG9uUmVzaXplKCkgewogIGNhbWVyYS5hc3BlY3QgPSB3aW5kb3cuaW5uZXJXaWR0aCAvIHdpbmRvdy5pbm5lckhlaWdodDsKICBjYW1lcmEudXBkYXRlUHJvamVjdGlvbk1hdHJpeCgpOwogIHJlbmRlcmVyLnNldFNpemUod2luZG93LmlubmVyV2lkdGgsIHdpbmRvdy5pbm5lckhlaWdodCk7Cn0Kd2luZG93LmFkZEV2ZW50TGlzdGVuZXIoInJlc2l6ZSIsIG9uUmVzaXplLCBmYWxzZSk7CgphZGRUb3J1c2VzKHNjZW5lKTsKYWRkTGlnaHRzKHNjZW5lKTsKY3JlYXRlU3RhcnMoc2NlbmUsIDIwMCk7Cgpjb25zdCBjb250cm9scyA9IG5ldyBPcmJpdENvbnRyb2xzKGNhbWVyYSwgcmVuZGVyZXIuZG9tRWxlbWVudCk7CmNvbnRyb2xzLmVuYWJsZVpvb20gPSBmYWxzZTsKCmNvbnN0IHNwYWNlVGV4dHVyZSA9IG5ldyBUSFJFRS5UZXh0dXJlTG9hZGVyKCkubG9hZCgKICAiaHR0cHM6Ly9pbWFnZXMucGV4ZWxzLmNvbS9waG90b3MvMTM0MTI3OS9wZXhlbHMtcGhvdG8tMTM0MTI3OS5qcGVnP2F1dG89Y29tcHJlc3MmY3M9dGlueXNyZ2Imdz0xMjYwJmg9NzUwJmRwcj0yIgopOwpzY2VuZS5iYWNrZ3JvdW5kID0gc3BhY2VUZXh0dXJlOwoKLy8gQW5pbWF0ZWQgTW92aW5nIFJpbmcKLy8gcmVuZGVyZXIucmVuZGVyKHNjZW5lLCBjYW1lcmEpCmZ1bmN0aW9uIGFuaW1hdGUodCkgewogIFRXRUVOLnVwZGF0ZSh0KTsKICByZXF1ZXN0QW5pbWF0aW9uRnJhbWUoYW5pbWF0ZSk7CiAgY29udHJvbHMudXBkYXRlKCk7CgogIHJlbmRlcmVyLnJlbmRlcihzY2VuZSwgY2FtZXJhKTsKfQoKYW5pbWF0ZSgpOwoKbGV0IGNhcmRzID0gW107CmxldCBhcnIgPSBbCiAgIiNvbmUiLAogICcjc3BvdGlmeScsCiAgIiN0d28iLAogICIjdGhyZWUiLAogICIjZm91ciIsCiAgIiNmaXZlIiwKICAiI3NpeCIsCiAgIiNzZXZlbiIsCiAgIiNlaWdodCIsCl07CmZvciAobGV0IGkgPSAwOyBpIDwgODsgaSsrKSB7CiAgY2FyZHMucHVzaChkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGFycltpXSkpOwp9Cgp0eXBlVGV4dCgiRnVsbFN0YWNrIHwgQVNVIHwgTklUIENhbGljdXQiLCAiZGVzaWduYXRpb24iLCA1MCwgInN0cmluZyIpOwp0eXBlVGV4dCgiV2VsY29tZSB0byBteSB3ZWJzaXRlLiBJdCBpcyB2ZXJ5IG11Y2ggYSB3b3JrIGluIHByb2dyZXNzIGFzIEknbGwgYmUgdXBkYXRpbmcgaXQgb2Z0ZW4uIiwgImludHJvMSIsIDIwLCAic3RyaW5nIik7CnR5cGVUZXh0KAogICJUaGlzIHdlYnNpdGUgaXMgbWVhbnQgdG8gY2FwdHVyZSBtdWNoIG9mIHdoYXQgSSBoYXZlIGxlYXJuZWQgYW5kIHZhbHVlIGluIGxpZmUuIEl0IGlzIGFsc28gc3VwcG9zZWQgdG8gaGVscCBtZSBjb21tdW5pY2F0ZSB3aXRoIHBlb3BsZSBvbiB3aGF0IEknbSB3b3JraW5nIG9uIHByZXNlbnRseS4iLAogICJpbnRybzIiLAogIDUwLAogICJzdHJpbmciCik7" as="script" />
+    
+    <link rel="dns-prefetch" href="//naturabags.com" />
     <script>
       function toggleSection(sectionId) {
         var section = document.getElementById(sectionId);
@@ -15,42 +18,383 @@
         }
       }
     </script>
-    <script type="module" crossorigin src="/assets/index.dca7b788.js"></script>
-    <link rel="stylesheet" href="/assets/index.fd550229.css">
+
+    <style>
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 2rem 0;
+        transition: all 0.3s ease;
+      }
+
+      .nav-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 1rem;
+      }
+
+      .nav-logo {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-decoration: none;
+        margin-bottom: 3rem;
+        text-align: center;
+      }
+
+      .nav-menu {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 1.5rem;
+        width: 100%;
+      }
+
+      .nav-item {
+        width: 100%;
+      }
+
+      .nav-item a {
+        color: white;
+        text-decoration: none;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        display: block;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .nav-item a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+      }
+
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 4px;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+      }
+
+      .nav-toggle span {
+        width: 25px;
+        height: 3px;
+        background: white;
+        transition: 0.3s;
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          width: 100%;
+          height: 70px;
+          padding: 1rem 0;
+        }
+
+        .nav-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 2rem;
+          height: auto;
+        }
+
+        .nav-logo {
+          margin-bottom: 0;
+        }
+
+        .nav-menu {
+          position: fixed;
+          top: 70px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 70px);
+          background: rgba(0, 0, 0, 0.95);
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 2rem;
+          padding-top: 2rem;
+          transition: left 0.3s ease;
+        }
+
+        .nav-menu.active {
+          left: 0;
+        }
+
+        .nav-toggle {
+          display: flex;
+        }
+
+        .nav-item a:hover {
+          transform: translateY(-2px);
+        }
+      }
+
+      body {
+        padding-left: 250px;
+        padding-top: 0;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding-left: 0;
+          padding-top: 80px;
+        }
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      section {
+        width: 100%;
+        margin: 2rem 0;
+      }
+
+      .responsive-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+      }
+
+      @media (max-width: 768px) {
+        main {
+          padding: 1rem;
+        }
+
+        #one {
+          flex-direction: column !important;
+        }
+
+        #one > div {
+          min-width: 100% !important;
+          max-width: 100% !important;
+          margin: 0.5rem 0 !important;
+        }
+      }
+
+      .experience-section {
+        margin-bottom: 3rem;
+      }
+
+      .experience-card {
+        background-color: #444;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s ease;
+      }
+
+      .experience-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .experience-card h4 {
+        color: #45b7d1;
+        margin: 0 0 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .experience-date {
+        color: #ffd93d;
+        font-weight: bold;
+        margin: 0 0 0.75rem 0;
+        font-size: 0.9rem;
+      }
+
+      .experience-description {
+        color: #ddd;
+        margin: 0;
+        line-height: 1.5;
+      }
+    </style>
+    <script>
+      function toggleSection(sectionId) {
+        var section = document.getElementById(sectionId);
+        if (section.style.display === "none") {
+          section.style.display = "block";
+        } else {
+          section.style.display = "none";
+        }
+      }
+
+      function toggleMobileMenu() {
+        const navMenu = document.querySelector(".nav-menu");
+        navMenu.classList.toggle("active");
+      }
+
+      function scrollToSection(sectionId) {
+        document.getElementById(sectionId).scrollIntoView({
+          behavior: "smooth",
+        });
+        // Close mobile menu if open
+        document.querySelector(".nav-menu").classList.remove("active");
+      }
+    </script>
+    <script type="module" crossorigin src="/assets/index.d8707206.js"></script>
+    <link rel="stylesheet" href="/assets/index.a1945bac.css">
   </head>
   <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#one" class="nav-logo" onclick="scrollToSection('one')"
+          >explosion fun :)</a
+        >
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="#one" onclick="scrollToSection('one')">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#three" onclick="scrollToSection('three')">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a href="#five" onclick="scrollToSection('five')">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="#seven" onclick="scrollToSection('seven')">Experience</a>
+          </li>
+          <li class="nav-item">
+            <a href="#eight" onclick="scrollToSection('eight')">Portfolio</a>
+          </li>
+        </ul>
+        <div
+          class="nav-toggle"
+          onclick="toggleMobileMenu()"
+          aria-label="Toggle navigation menu"
+          role="button"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </div>
+      </div>
+    </nav>
+
     <canvas id="bg"></canvas>
     <div id="app"></div>
 
     <main>
-      <section id="one" style="display: flex">
-        <div id="x" style="flex: 1">
-          <header>
-            <h1>Reuben Roy</h1>
-            <div id="lvl"></div>
-            <div id="health"></div>
-            <div id="exp"></div>
-            <div id="mana"></div>
-            <div id="lastUpdate"></div>
-            <div id="streak"></div>
+      <section id="one" style="display: flex; flex-wrap: wrap; max-width: 100%">
+        <div
+          style="
+            flex: 1;
+            min-width: 300px;
+            max-width: 100%;
+            background-color: #333;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+          "
+        >
+          <header style="text-align: center">
+            <p style="font-size: 2rem; margin: 1rem; color: white">
+              Reuben Roy
+            </p>
+            <div
+              id="lvl"
+              style="
+                font-size: 1.2rem;
+                margin: 0.5rem 0;
+                color: #ccc;
+                text-align: left;
+              "
+            ></div>
+            <div
+              id="health"
+              style="
+                font-size: 1rem;
+                margin: 0.5rem 0;
+                color: #ff6b6b;
+                text-align: left;
+              "
+            ></div>
+            <div
+              id="exp"
+              style="
+                font-size: 1rem;
+                margin: 0.5rem 0;
+                color: #4ecdc4;
+                text-align: left;
+              "
+            ></div>
+            <div
+              id="mana"
+              style="
+                font-size: 1rem;
+                margin: 0.5rem 0;
+                color: #45b7d1;
+                text-align: left;
+              "
+            ></div>
+            <div
+              id="lastUpdate"
+              style="
+                font-size: 0.9rem;
+                margin: 0.5rem 0;
+                color: #999;
+                text-align: left;
+              "
+            ></div>
+            <div
+              id="streak"
+              style="
+                font-size: 1rem;
+                margin: 0.5rem 0;
+                color: #ffd93d;
+                text-align: left;
+              "
+            ></div>
           </header>
         </div>
 
-        <div style="flex: 1">
-          <header>
-            <p id="designation"></p>
-            <p id="intro1"></p>
-            <p id="intro2"></p>
-          </header>
+        <div
+          style="
+            flex: 1;
+            min-width: 300px;
+            max-width: 100%;
+            background-color: #333;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+          "
+          class="responsive-content"
+        >
+          <p id="designation"></p>
+          <p id="intro1"></p>
+          <p id="intro2"></p>
         </div>
       </section>
 
       <section id="spotify" style="margin: 0 auto">
         <iframe
           style="border-radius: 12px"
-          src="https://open.spotify.com/embed/playlist/7Bnb2sU3jUSYkxniOHAwly?utm_source=generator&theme=0"
+          src="https://open.spotify.com/embed/playlist/7argnm9cuFJWo9txW9OzlD?utm_source=generator&theme=0"
           width="100%"
-          height="352"
+          height="152"
           frameborder="0"
           allowfullscreen=""
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -58,214 +402,248 @@
         ></iframe>
       </section>
 
-      <section id="two">
-        <blockquote>
-          <p>I like doing creative stuff</p>
-          <hr />
-          <h2>
-            If you have a flamethrower just laying around, please come visit me,
-            and bring the flamethrower
-          </h2>
-          <br />
-        </blockquote>
+      <section id="three">
+        <div style="text-align: center; margin-bottom: 1.5rem">
+          <h2><u>Skills</u></h2>
+          <p style="font-size: 1.1rem; color: #ccc; margin: 1rem 0">
+            A person is more than the list of technologies they used to get work
+            done
+          </p>
+          <p style="font-size: 1rem; color: #999">
+            But these are the technologies I am familiar with
+          </p>
+        </div>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+          "
+        >
+          <div class="skill-card">
+            <h4>Version Control</h4>
+            <p>Git, Github, BitBucket</p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Python</h4>
+            <p>Numpy, Pandas, Poetry</p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Frontend</h4>
+            <p>HTML, CSS, Javascript, React, Three.js, Bootstrap, MUI</p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Backend</h4>
+            <p>
+              Java 11, SpringBoot, REST APIs, Microservices, Maven, JUnit5,
+              Mockito
+            </p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Databases</h4>
+            <p>PostgreSQL, Redis</p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Cloud & Hosting</h4>
+            <p>Google Cloud, Heroku, Vercel, Firebase</p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Tools</h4>
+            <p>Jira/Kanban, GitHub Actions, Postman, SonarQube, VS Code</p>
+          </div>
+        </div>
+
+        <style>
+          .skill-card {
+            background-color: #444;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+          }
+
+          .skill-card h4 {
+            color: #4ecdc4;
+            margin: 0 0 0.5rem 0;
+            font-size: 1rem;
+          }
+
+          .skill-card p {
+            margin: 0;
+            color: #ddd;
+            font-size: 0.9rem;
+          }
+        </style>
       </section>
 
       <section id="three">
-        <h2 style="text-align: center"><u>Skills::</u></h2>
-        <h2 style="text-align: center">
-          A person is more than the list of technologies they used to get work
-          done
-        </h2>
-        <h2 style="text-align: center">
-          But these are the technologies I am familiar with
-        </h2>
-        <section
+        <div style="text-align: center; margin-bottom: 2rem">
+          <h2><u>Certifications and Workshops</u></h2>
+        </div>
+
+        <div
           style="
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 85%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 0 auto;
           "
-          onclick="toggleSection('three')"
         >
-          <fieldset>
-            <h3>Version Control</h3>
-            <ul>
-              <li>Git</li>
-              <li>Github</li>
-              <li>BitBucket</li>
-            </ul>
-          </fieldset>
+          <div class="cert-card">
+            <a
+              href="https://www.freecodecamp.org/certification/ReubenRoy/javascript-algorithms-and-data-structures"
+              target="_blank"
+              >JavaScript Algorithms and Data Structures</a
+            >
+            <p>freeCodeCamp.org</p>
+          </div>
 
-          <fieldset>
-            <h3>Python</h3>
-            <ul>
-              <li>Numpy</li>
-              <li>Pandas</li>
-              <li>Poetry</li>
-            </ul>
-          </fieldset>
+          <div class="cert-card">
+            <a
+              href="https://www.freecodecamp.org/certification/ReubenRoy/responsive-web-design"
+              target="_blank"
+              >Responsive Web Design</a
+            >
+            <p>freeCodeCamp.org</p>
+          </div>
 
-          <fieldset>
-            <h3>FrontEnd Development</h3>
-            <ul>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>Javascript (Js)</li>
-              <li>React Js</li>
-              <li>Express Js</li>
-              <li>Crypto Js</li>
-              <li>Three Js</li>
-              <li>Bootstrap</li>
-              <li>MUI</li>
-              <li>Visual Studio Code</li>
-            </ul>
-          </fieldset>
+          <div class="cert-card">
+            <a
+              href="https://www.coursera.org/account/accomplishments/certificate/PP9R2W2SGRXH"
+              target="_blank"
+              >Introduction to Data Science in Python</a
+            >
+            <p>University of Michigan & Coursera</p>
+          </div>
 
-          <fieldset>
-            <h3>BackEnd Development</h3>
-            <ul>
-              <li>Java 11</li>
-              <li>Maven</li>
-              <li>SpringBoot</li>
-              <li>Junit5</li>
-              <li>Mockito</li>
-              <li>REST APIs</li>
-              <li>Microservices</li>
-              <li>IntelliJ IDEA</li>
-              <li>Postman</li>
-              <li>SonarQube</li>
-              <li>SonarLint</li>
-              <li>Swagger / OpenAPI</li>
-              <li>DBeaver</li>
-            </ul>
-          </fieldset>
+          <div class="cert-card">
+            <a
+              href="https://drive.google.com/file/d/1-dm9rRxr2olYYuFQeU1J7owzvZSl3wUa/view?usp=sharing"
+              target="_blank"
+              >Google AI|Explore ML Workshop</a
+            >
+            <p>Google</p>
+          </div>
 
-          <fieldset>
-            <h3>Databases</h3>
-            <ul>
-              <li>PostgreSQL</li>
-              <li>Redis DB</li>
-            </ul>
-          </fieldset>
-
-          <fieldset>
-            <h3>Cloud Providers</h3>
-            <ul>
-              <li>Google Cloud</li>
-              <li>Heroku</li>
-              <li>Railway App</li>
-              <li>Vercel</li>
-              <li>Firebase</li>
-            </ul>
-          </fieldset>
-
-          <fieldset>
-            <h3>CMS</h3>
-            <ul>
-              <li>Sanity</li>
-              <li>Wordpress</li>
-            </ul>
-          </fieldset>
-
-          <fieldset>
-            <h3>Tools / Methodologies</h3>
-            <ul>
-              <li>Jira / Kanban Boards</li>
-              <li>Confluence / Service Now</li>
-              <li>Terminal/ CLI</li>
-              <li>Github Actions DevOps</li>
-            </ul>
-          </fieldset>
-        </section>
+          <div class="cert-card">
+            <span>Astrophysics Workshop Conductor</span>
+            <p>NIT Calicut</p>
+          </div>
+        </div>
       </section>
 
-      <section id="four">
-        <blockquote>
-          <h2>📜 Manifesto</h2>
-          <p id="manifestol1"></p>
-          <br />
-          <p id="manifestol2"></p>
-          <br />
-          <p id="manifestol3"></p>
-        </blockquote>
-      </section>
+      <style>
+        .cert-card {
+          background-color: #444;
+          border-radius: 8px;
+          padding: 1rem;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+          transition: transform 0.2s ease;
+        }
 
-      <section class="light" id="five">
-        <u><h2>👩🏽‍🚀 Projects</h2></u>
+        .cert-card:hover {
+          transform: translateY(-2px);
+        }
 
-        <h2>🏆 Certifications And Workshops</h2>
-        <label
-          ><a
-            href="https://www.freecodecamp.org/certification/ReubenRoy/javascript-algorithms-and-data-structures"
-            target="_blank"
-            >JavaScript Algorithms and Data Structures</a
-          >
-          - freeCodeCamp.org</label
-        >
-        <label
-          ><a
-            href="https://www.freecodecamp.org/certification/ReubenRoy/responsive-web-design"
-            target="_blank"
-            >Responsive Web Design</a
-          >
-          - freeCodeCamp.org</label
-        >
-        <label
-          ><a
-            href="https://www.coursera.org/account/accomplishments/certificate/PP9R2W2SGRXH"
-            target="_blank"
-            >Introduction to Data Science in Python</a
-          >
-          - University of Michigan & Coursera</label
-        >
-        <label
-          ><a
-            href="https://drive.google.com/file/d/1-dm9rRxr2olYYuFQeU1J7owzvZSl3wUa/view?usp=sharing"
-            target="_blank"
-            >Google AI|Explore ML Workshop</a
-          >
-          - Google</label
-        >
-        <label>Conducted Astrophysics Workshop at Nit Calicut</label>
-      </section>
+        .cert-card a {
+          color: #45b7d1;
+          text-decoration: none;
+          font-weight: bold;
+        }
 
-      <section id="six">
-        <blockquote>
-          <p>The best way out is always through <br />-Robert Frost</p>
-        </blockquote>
-      </section>
+        .cert-card a:hover {
+          color: #4ecdc4;
+        }
 
-      <section class="left" id="seven">
-        <h2>Work History</h2>
+        .cert-card span {
+          color: #ddd;
+          font-weight: bold;
+        }
 
-        <h3>Tata Consultancy Services(TCS)</h3>
-        <p>
-          This is where I learned coporate stuff and how companies work at
-          scale, and a whole host of tools to work in Agile sprint based teams
-        </p>
+        .cert-card p {
+          margin: 0.25rem 0 0 0;
+          color: #999;
+          font-size: 0.9rem;
+        }
+      </style>
 
-        <u><h2>Internships</h2></u>
+      <section id="three">
+        <div style="text-align: center; margin-bottom: 2rem">
+          <h2><u>Work Experience</u></h2>
+        </div>
 
-        <h3>ElectroBiosonics, Cochin</h3>
-        <p>December 2018</p>
-        <p>
-          Worked under Dr Cherian for PCB designing using MPLabX and
-          fabrication, electronic equipment assembly, commercial electroplating,
-          transformers and power systems manufacturing etc.
-        </p>
-        <h3>Keltron, Thrissur, Kerala</h3>
-        <p>May 2019</p>
-        <p>
-          Worked with Arduino to make connected devices and electronics to
-          understand more about the internet of things.
-        </p>
-        <h3>Geo-Enterprises, Kerala</h3>
-        <p>December 2020</p>
-        <p>
-          Did digital marketing, search-engine optimisation, acquired skills
-          related to customer and employee management.
-        </p>
+        <div style="max-width: 800px; margin: 0 auto">
+          <div class="experience-section">
+            <h3 style="color: #4ecdc4; margin-bottom: 1.5rem">Work History</h3>
+
+            <div class="experience-card">
+              <h4>
+                Full-Stack Developer, Tata Consultancy Services (IKEA Client
+                Project)
+              </h4>
+              <p class="experience-description">
+                Built the microservices powering the IKEA websites, processing
+                millions of transactions annually. Worked on the "Planner" tool
+                letting users built their rooms in 3D. Acquired knowledge on
+                corporate tooling, processes and how to work in agile teams.
+              </p>
+            </div>
+
+            <div class="experience-card">
+              <h4>
+                Full-Stack Developer, RCKR Software (CPSI/ Trubridge Client
+                Project)
+              </h4>
+              <p class="experience-description">
+                Developed secure backend systems for the Unify service,
+                following the FHIR specification, allowing hospitals USA wide to
+                exchange information seamlessly, reducing cost of patient care
+                significantly.
+              </p>
+            </div>
+          </div>
+
+          <div class="experience-section">
+            <h3 style="color: #4ecdc4; margin-bottom: 1.5rem">Internships</h3>
+
+            <div class="experience-card">
+              <h4>ElectroBiosonics, Cochin</h4>
+              <p class="experience-date">December 2018</p>
+              <p class="experience-description">
+                Worked under Dr Cherian for PCB designing using MPLabX and
+                fabrication, electronic equipment assembly, commercial
+                electroplating, transformers and power systems manufacturing
+                etc.
+              </p>
+            </div>
+
+            <div class="experience-card">
+              <h4>Keltron, Thrissur, Kerala</h4>
+              <p class="experience-date">May 2019</p>
+              <p class="experience-description">
+                Worked with Arduino to make connected devices and electronics to
+                understand more about the internet of things.
+              </p>
+            </div>
+
+            <div class="experience-card">
+              <h4>Geo-Enterprises, Kerala</h4>
+              <p class="experience-date">December 2020</p>
+              <p class="experience-description">
+                Did digital marketing, search-engine optimisation, acquired
+                skills related to customer and employee management.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="eight">
