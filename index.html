@@ -227,6 +227,64 @@
         margin: 0;
         line-height: 1.5;
       }
+
+      .skill-card {
+        background-color: #444;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s ease;
+      }
+
+      .skill-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .skill-card h4 {
+        color: #45b7d1;
+        margin: 0 0 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .skill-card p {
+        color: #ddd;
+        margin: 0;
+        line-height: 1.4;
+        font-size: 0.9rem;
+      }
+
+      .cert-card {
+        background-color: #444;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s ease;
+      }
+
+      .cert-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .cert-card a {
+        color: #45b7d1;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      .cert-card a:hover {
+        color: #4ecdc4;
+      }
+
+      .cert-card span {
+        color: #ddd;
+        font-weight: bold;
+      }
+
+      .cert-card p {
+        margin: 0.25rem 0 0 0;
+        color: #999;
+        font-size: 0.9rem;
+      }
     </style>
     <script>
       function toggleSection(sectionId) {
@@ -415,71 +473,75 @@
         <div
           style="
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
           "
         >
           <div class="skill-card">
-            <h4>Version Control</h4>
-            <p>Git, Github, BitBucket</p>
-          </div>
-
-          <div class="skill-card">
-            <h4>Python</h4>
-            <p>Numpy, Pandas, Poetry</p>
-          </div>
-
-          <div class="skill-card">
-            <h4>Frontend</h4>
-            <p>HTML, CSS, Javascript, React, Three.js, Bootstrap, MUI</p>
-          </div>
-
-          <div class="skill-card">
-            <h4>Backend</h4>
+            <h4>Backend Development</h4>
             <p>
-              Java 11, SpringBoot, REST APIs, Microservices, Maven, JUnit5,
-              Mockito
+              Java (Spring Boot), Python, .NET, Microservices, REST APIs, Maven,
+              JUnit5, Mockito
+            </p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Frontend Development</h4>
+            <p>
+              HTML, CSS, JavaScript, React.js, Three.js, Bootstrap, MUI, D3.js
             </p>
           </div>
 
           <div class="skill-card">
             <h4>Databases</h4>
-            <p>PostgreSQL, Redis</p>
+            <p>PostgreSQL, Redis, MySQL, SQL and NoSQL Databases</p>
           </div>
 
           <div class="skill-card">
-            <h4>Cloud & Hosting</h4>
-            <p>Google Cloud, Heroku, Vercel, Firebase</p>
+            <h4>Cloud & Infrastructure</h4>
+            <p>AWS, Google Cloud, Azure, Docker, Heroku, Vercel, Firebase</p>
           </div>
 
           <div class="skill-card">
-            <h4>Tools</h4>
-            <p>Jira/Kanban, GitHub Actions, Postman, SonarQube, VS Code</p>
+            <h4>Version Control & DevOps</h4>
+            <p>
+              Git, GitHub, BitBucket, GitHub Actions, SonarQube, Unit Testing
+            </p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Data Science & Analytics</h4>
+            <p>
+              Data Visualization (D3.js, Matplotlib), Data Mining, Data
+              Modeling, Machine Learning, NumPy, Pandas
+            </p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Project Management</h4>
+            <p>Agile, Jira/Kanban, Confluence, Postman</p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Content Management</h4>
+            <p>WordPress, iText, Poetry</p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Development Tools</h4>
+            <p>VS Code, Postman, SonarQube</p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Soft Skills</h4>
+            <p>
+              Strong Written and Verbal Communication, Problem Solving, Software
+              Development, Web Development
+            </p>
           </div>
         </div>
-
-        <style>
-          .skill-card {
-            background-color: #444;
-            border-radius: 8px;
-            padding: 1rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-          }
-
-          .skill-card h4 {
-            color: #4ecdc4;
-            margin: 0 0 0.5rem 0;
-            font-size: 1rem;
-          }
-
-          .skill-card p {
-            margin: 0;
-            color: #ddd;
-            font-size: 0.9rem;
-          }
-        </style>
       </section>
 
       <section id="three">
