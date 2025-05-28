@@ -2,9 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Resume Project</title>
+
+    <link rel="preload" href="/main.js" as="script" />
+    <link rel="preload" href="/style.css" as="style" />
+    <link rel="dns-prefetch" href="//naturabags.com" />
     <script>
       function toggleSection(sectionId) {
         var section = document.getElementById(sectionId);
@@ -15,40 +18,343 @@
         }
       }
     </script>
+
+    <style>
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 2rem 0;
+        transition: all 0.3s ease;
+      }
+
+      .nav-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 1rem;
+      }
+
+      .nav-logo {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-decoration: none;
+        margin-bottom: 3rem;
+        text-align: center;
+      }
+
+      .nav-menu {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 1.5rem;
+        width: 100%;
+      }
+
+      .nav-item {
+        width: 100%;
+      }
+
+      .nav-item a {
+        color: white;
+        text-decoration: none;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        display: block;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .nav-item a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(5px);
+      }
+
+      .nav-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 4px;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+      }
+
+      .nav-toggle span {
+        width: 25px;
+        height: 3px;
+        background: white;
+        transition: 0.3s;
+      }
+
+      @media (max-width: 768px) {
+        .navbar {
+          width: 100%;
+          height: 70px;
+          padding: 1rem 0;
+        }
+
+        .nav-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 2rem;
+          height: auto;
+        }
+
+        .nav-logo {
+          margin-bottom: 0;
+        }
+
+        .nav-menu {
+          position: fixed;
+          top: 70px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 70px);
+          background: rgba(0, 0, 0, 0.95);
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 2rem;
+          padding-top: 2rem;
+          transition: left 0.3s ease;
+        }
+
+        .nav-menu.active {
+          left: 0;
+        }
+
+        .nav-toggle {
+          display: flex;
+        }
+
+        .nav-item a:hover {
+          transform: translateY(-2px);
+        }
+      }
+
+      body {
+        padding-left: 250px;
+        padding-top: 0;
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding-left: 0;
+          padding-top: 80px;
+        }
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      section {
+        width: 100%;
+        margin: 2rem 0;
+      }
+
+      .responsive-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box;
+      }
+
+      @media (max-width: 768px) {
+        main {
+          padding: 1rem;
+        }
+
+        #one {
+          flex-direction: column !important;
+        }
+
+        #one > div {
+          min-width: 100% !important;
+          max-width: 100% !important;
+          margin: 0.5rem 0 !important;
+        }
+      }
+    </style>
+    <script>
+      function toggleSection(sectionId) {
+        var section = document.getElementById(sectionId);
+        if (section.style.display === "none") {
+          section.style.display = "block";
+        } else {
+          section.style.display = "none";
+        }
+      }
+
+      function toggleMobileMenu() {
+        const navMenu = document.querySelector(".nav-menu");
+        navMenu.classList.toggle("active");
+      }
+
+      function scrollToSection(sectionId) {
+        document.getElementById(sectionId).scrollIntoView({
+          behavior: "smooth",
+        });
+        // Close mobile menu if open
+        document.querySelector(".nav-menu").classList.remove("active");
+      }
+    </script>
   </head>
   <body>
+    <nav class="navbar">
+      <div class="nav-container">
+        <a href="#one" class="nav-logo" onclick="scrollToSection('one')"
+          >explosion fun :)</a
+        >
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="#one" onclick="scrollToSection('one')">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#three" onclick="scrollToSection('three')">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a href="#four" onclick="scrollToSection('four')">Manifesto</a>
+          </li>
+          <li class="nav-item">
+            <a href="#five" onclick="scrollToSection('five')">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="#seven" onclick="scrollToSection('seven')">Experience</a>
+          </li>
+          <li class="nav-item">
+            <a href="#eight" onclick="scrollToSection('eight')">Portfolio</a>
+          </li>
+        </ul>
+        <div class="nav-toggle" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
     <canvas id="bg"></canvas>
     <div id="app"></div>
 
     <main>
-      <section id="one" style="display: flex">
-        <div id="x" style="flex: 1">
-          <header>
-            <h1>Reuben Roy</h1>
-            <div id="lvl"></div>
-            <div id="health"></div>
-            <div id="exp"></div>
-            <div id="mana"></div>
-            <div id="lastUpdate"></div>
-            <div id="streak"></div>
+      <section id="one" style="display: flex; flex-wrap: wrap; max-width: 100%">
+        <div
+          style="
+            flex: 1;
+            min-width: 300px;
+            max-width: 100%;
+            background-color: #333;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+          "
+        >
+          <header style="text-align: center">
+            <p style="font-size: 2rem; margin: 1rem; color: white">
+              Reuben Roy
+            </p>
+            <div
+              id="lvl"
+              style="
+                font-size: 1.2rem;
+                margin: 0.5rem 0;
+                color: #ccc;
+                text-align: left;
+              "
+            ></div>
+            <div
+              id="health"
+              style="
+                font-size: 1rem;
+                margin: 0.5rem 0;
+                color: #ff6b6b;
+                text-align: left;
+              "
+            ></div>
+            <div
+              id="exp"
+              style="
+                font-size: 1rem;
+                margin: 0.5rem 0;
+                color: #4ecdc4;
+                text-align: left;
+              "
+            ></div>
+            <div
+              id="mana"
+              style="
+                font-size: 1rem;
+                margin: 0.5rem 0;
+                color: #45b7d1;
+                text-align: left;
+              "
+            ></div>
+            <div
+              id="lastUpdate"
+              style="
+                font-size: 0.9rem;
+                margin: 0.5rem 0;
+                color: #999;
+                text-align: left;
+              "
+            ></div>
+            <div
+              id="streak"
+              style="
+                font-size: 1rem;
+                margin: 0.5rem 0;
+                color: #ffd93d;
+                text-align: left;
+              "
+            ></div>
           </header>
         </div>
 
-        <div style="flex: 1">
-          <header>
-            <p id="designation"></p>
-            <p id="intro1"></p>
-            <p id="intro2"></p>
-          </header>
+        <div
+          style="
+            flex: 1;
+            min-width: 300px;
+            max-width: 100%;
+            background-color: #333;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+          "
+          class="responsive-content"
+        >
+          <p id="designation"></p>
+          <p id="intro1"></p>
+          <p id="intro2"></p>
         </div>
       </section>
 
       <section id="spotify" style="margin: 0 auto">
         <iframe
           style="border-radius: 12px"
-          src="https://open.spotify.com/embed/playlist/7Bnb2sU3jUSYkxniOHAwly?utm_source=generator&theme=0"
+          src="https://open.spotify.com/embed/playlist/7argnm9cuFJWo9txW9OzlD?utm_source=generator&theme=0"
           width="100%"
-          height="352"
+          height="152"
           frameborder="0"
           allowfullscreen=""
           allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"

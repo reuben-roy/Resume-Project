@@ -2,7 +2,6 @@ canvas {
   position: fixed;
   top: 0;
   left: 0;
-  /* this fixed position allows the canvas to serve as a background and we can overlay other html elements over it */
 }
 
 .info {
@@ -17,7 +16,6 @@ canvas {
 :root {
   --dark-bg: rgba(15, 15, 15, 0.95);
   --spacing: 350px;
-
   font-family: brandon-grotesque, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -38,22 +36,13 @@ ul {
   font-family: elevon, sans-serif;
   font-weight: 700;
   font-style: normal;
-  mix-blend-mode: exclusion;
-  text-shadow: 2px 2px 100px rgba(0, 0, 0, 1);
-}
-
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 header {
-  /* background: var(--dark-bg); */
   grid-column: 2 / span 5;
   font-size: 2.5rem;
   padding: 2rem;
-  /* margin-bottom: var(--spacing); */
 }
 
 section {
@@ -61,7 +50,6 @@ section {
   color: white;
   padding: 1rem;
   position: relative;
-  /* background: var(--dark-bg); */
   font-size: 1.25rem;
   line-height: 1.5;
   margin-bottom: var(--spacing);
@@ -123,36 +111,28 @@ button:active {
   width: 90%;
 }
 
-#two {
-  /* margin-left: 35%; */
+#two,
+#four,
+#six,
+#ten {
   text-align: center;
   margin: 0 auto;
 }
-#three {
-  width: 85%;
-  margin: 0 auto;
-}
-#four {
-  margin: 0 auto;
-  text-align: center;
-}
-#six {
-  text-align: center;
-  margin: 0 auto;
-}
+
+#three,
 #eight {
   width: 85%;
   margin: 0 auto;
+}
+
+#eight {
   text-align: center;
 }
+
 #nine {
   width: 85%;
   margin: 0 auto;
   height: 200%;
-}
-#ten {
-  text-align: center;
-  margin: 0 auto;
 }
 
 label {
@@ -161,32 +141,6 @@ label {
 
 fieldset {
   border: 0;
-}
-
-@media screen and (max-width: 768px) {
-  /* Adjust the font size and spacing for smaller screens */
-  :root {
-    --spacing: 50px;
-    font-size: 16px;
-  }
-
-  /* Make the header take up the full width of the screen */
-  header {
-    grid-column: 1 / -1;
-  }
-
-  /* Adjust the width of the section and move it down below the header */
-  /* section {
-    width: 100%;
-    margin-top: var(--spacing);
-    margin-bottom: 0;
-  } */
-
-  /* Center the blockquote */
-  blockquote {
-    grid-column: 1 / -1;
-    text-align: center;
-  }
 }
 
 #x {
@@ -208,23 +162,13 @@ fieldset {
   margin: 0;
 }
 
-#lvl > h6 {
-  flex-basis: 100%;
-  margin: 0.5rem 0;
-}
-
+#lvl > h6,
 #lastUpdate > h6 {
   flex-basis: 100%;
-  /* margin: 1rem 0; */
   margin: 0.5rem 0;
   text-align: left;
 }
 
-/* 
-#lastUpdate,
-#streak > h6 {
-  margin: 0.5rem, 0;
-} */
 .flex-col1 {
   flex: 1;
   margin: auto 0;
@@ -241,4 +185,128 @@ fieldset {
   margin: auto 0;
   margin-left: 1rem;
   text-align: left;
+}
+
+/* Tablet and Mobile Responsive Styles */
+@media screen and (max-width: 1024px) {
+  section {
+    width: 80%;
+    margin: 1.5rem 1.5rem;
+  }
+
+  #one {
+    width: 95%;
+  }
+
+  #three,
+  #eight,
+  #nine {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --spacing: 100px;
+    font-size: 14px;
+  }
+
+  header {
+    grid-column: 1 / -1;
+    font-size: 2rem;
+    padding: 1.5rem 1rem;
+  }
+
+  section {
+    width: 95%;
+    margin: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+
+  blockquote {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+
+  blockquote p {
+    font-size: 2.5rem;
+  }
+
+  #one {
+    width: 98%;
+    flex-direction: column;
+  }
+
+  #one > div {
+    flex: none;
+    width: 100%;
+  }
+
+  #three,
+  #eight,
+  #nine {
+    width: 98%;
+  }
+
+  #lvl,
+  #health,
+  #exp,
+  #mana,
+  #lastUpdate,
+  #streak {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .flex-col1,
+  .flex-col2,
+  .flex-col3 {
+    flex: none;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Skills section responsive */
+  #three section {
+    width: 100%;
+    justify-content: center;
+  }
+
+  fieldset {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  :root {
+    --spacing: 50px;
+    font-size: 12px;
+  }
+
+  header {
+    font-size: 1.5rem;
+    /* padding: 0.5rem 0.5rem; */
+  }
+
+  section {
+    width: 98%;
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  blockquote p {
+    font-size: 1.8rem;
+  }
+
+  button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  #spotify iframe {
+    height: 250px;
+  }
 }

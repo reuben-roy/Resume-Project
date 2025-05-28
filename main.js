@@ -163,18 +163,18 @@ const observer = new IntersectionObserver(
   }
 );
 
-typeText("FullStack | NIT Calicut", "designation", 100, "string");
-typeText("Welcome to my random crappy unresponsive, unfinished website", "intro1", 100, "string");
+typeText("FullStack | ASU | NIT Calicut", "designation", 50, "string");
+typeText("Welcome to my website. It is very much a work in progress as I'll be updating it often.", "intro1", 20, "string");
 typeText(
-  "Below you can find my spotify. I added it here for absolutely no ducking reason",
+  "This website is meant to capture much of what I have learned and value in life. It is also supposed to help me communicate with people on what I'm working on presently.",
   "intro2",
-  100,
+  50,
   "string"
 );
 typeText(
   "I want to learn more and make cool things",
   "manifestol1",
-  100,
+  0,
   "string"
 );
-typeText("And I wanna do it real fast", "manifestol2", 100, "string");
+typeText("And I wanna do it real fast", "manifestol2", 0, "string");
