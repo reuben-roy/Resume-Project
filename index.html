@@ -191,6 +191,42 @@
           margin: 0.5rem 0 !important;
         }
       }
+
+      .experience-section {
+        margin-bottom: 3rem;
+      }
+
+      .experience-card {
+        background-color: #444;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        transition: transform 0.2s ease;
+      }
+
+      .experience-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .experience-card h4 {
+        color: #45b7d1;
+        margin: 0 0 0.5rem 0;
+        font-size: 1.1rem;
+      }
+
+      .experience-date {
+        color: #ffd93d;
+        font-weight: bold;
+        margin: 0 0 0.75rem 0;
+        font-size: 0.9rem;
+      }
+
+      .experience-description {
+        color: #ddd;
+        margin: 0;
+        line-height: 1.5;
+      }
     </style>
     <script>
       function toggleSection(sectionId) {
@@ -230,9 +266,6 @@
             <a href="#three" onclick="scrollToSection('three')">Skills</a>
           </li>
           <li class="nav-item">
-            <a href="#four" onclick="scrollToSection('four')">Manifesto</a>
-          </li>
-          <li class="nav-item">
             <a href="#five" onclick="scrollToSection('five')">Projects</a>
           </li>
           <li class="nav-item">
@@ -242,10 +275,15 @@
             <a href="#eight" onclick="scrollToSection('eight')">Portfolio</a>
           </li>
         </ul>
-        <div class="nav-toggle" onclick="toggleMobileMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
+        <div
+          class="nav-toggle"
+          onclick="toggleMobileMenu()"
+          aria-label="Toggle navigation menu"
+          role="button"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </div>
       </div>
     </nav>
@@ -362,214 +400,231 @@
         ></iframe>
       </section>
 
-      <section id="two">
-        <blockquote>
-          <p>I like doing creative stuff</p>
-          <hr />
-          <h2>
-            If you have a flamethrower just laying around, please come visit me,
-            and bring the flamethrower
-          </h2>
-          <br />
-        </blockquote>
+      <section id="three">
+        <div style="text-align: center; margin-bottom: 1.5rem">
+          <h2><u>Skills</u></h2>
+          <p style="font-size: 1.1rem; color: #ccc; margin: 1rem 0">
+            A person is more than the list of technologies they used to get work
+            done
+          </p>
+          <p style="font-size: 1rem; color: #999">
+            But these are the technologies I am familiar with
+          </p>
+        </div>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+          "
+        >
+          <div class="skill-card">
+            <h4>Version Control</h4>
+            <p>Git, Github, BitBucket</p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Python</h4>
+            <p>Numpy, Pandas, Poetry</p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Frontend</h4>
+            <p>HTML, CSS, Javascript, React, Three.js, Bootstrap, MUI</p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Backend</h4>
+            <p>
+              Java 11, SpringBoot, REST APIs, Microservices, Maven, JUnit5,
+              Mockito
+            </p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Databases</h4>
+            <p>PostgreSQL, Redis</p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Cloud & Hosting</h4>
+            <p>Google Cloud, Heroku, Vercel, Firebase</p>
+          </div>
+
+          <div class="skill-card">
+            <h4>Tools</h4>
+            <p>Jira/Kanban, GitHub Actions, Postman, SonarQube, VS Code</p>
+          </div>
+        </div>
+
+        <style>
+          .skill-card {
+            background-color: #444;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+          }
+
+          .skill-card h4 {
+            color: #4ecdc4;
+            margin: 0 0 0.5rem 0;
+            font-size: 1rem;
+          }
+
+          .skill-card p {
+            margin: 0;
+            color: #ddd;
+            font-size: 0.9rem;
+          }
+        </style>
       </section>
 
       <section id="three">
-        <h2 style="text-align: center"><u>Skills::</u></h2>
-        <h2 style="text-align: center">
-          A person is more than the list of technologies they used to get work
-          done
-        </h2>
-        <h2 style="text-align: center">
-          But these are the technologies I am familiar with
-        </h2>
-        <section
+        <div style="text-align: center; margin-bottom: 2rem">
+          <h2><u>Certifications and Workshops</u></h2>
+        </div>
+
+        <div
           style="
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 85%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 0 auto;
           "
-          onclick="toggleSection('three')"
         >
-          <fieldset>
-            <h3>Version Control</h3>
-            <ul>
-              <li>Git</li>
-              <li>Github</li>
-              <li>BitBucket</li>
-            </ul>
-          </fieldset>
+          <div class="cert-card">
+            <a
+              href="https://www.freecodecamp.org/certification/ReubenRoy/javascript-algorithms-and-data-structures"
+              target="_blank"
+              >JavaScript Algorithms and Data Structures</a
+            >
+            <p>freeCodeCamp.org</p>
+          </div>
 
-          <fieldset>
-            <h3>Python</h3>
-            <ul>
-              <li>Numpy</li>
-              <li>Pandas</li>
-              <li>Poetry</li>
-            </ul>
-          </fieldset>
+          <div class="cert-card">
+            <a
+              href="https://www.freecodecamp.org/certification/ReubenRoy/responsive-web-design"
+              target="_blank"
+              >Responsive Web Design</a
+            >
+            <p>freeCodeCamp.org</p>
+          </div>
 
-          <fieldset>
-            <h3>FrontEnd Development</h3>
-            <ul>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>Javascript (Js)</li>
-              <li>React Js</li>
-              <li>Express Js</li>
-              <li>Crypto Js</li>
-              <li>Three Js</li>
-              <li>Bootstrap</li>
-              <li>MUI</li>
-              <li>Visual Studio Code</li>
-            </ul>
-          </fieldset>
+          <div class="cert-card">
+            <a
+              href="https://www.coursera.org/account/accomplishments/certificate/PP9R2W2SGRXH"
+              target="_blank"
+              >Introduction to Data Science in Python</a
+            >
+            <p>University of Michigan & Coursera</p>
+          </div>
 
-          <fieldset>
-            <h3>BackEnd Development</h3>
-            <ul>
-              <li>Java 11</li>
-              <li>Maven</li>
-              <li>SpringBoot</li>
-              <li>Junit5</li>
-              <li>Mockito</li>
-              <li>REST APIs</li>
-              <li>Microservices</li>
-              <li>IntelliJ IDEA</li>
-              <li>Postman</li>
-              <li>SonarQube</li>
-              <li>SonarLint</li>
-              <li>Swagger / OpenAPI</li>
-              <li>DBeaver</li>
-            </ul>
-          </fieldset>
+          <div class="cert-card">
+            <a
+              href="https://drive.google.com/file/d/1-dm9rRxr2olYYuFQeU1J7owzvZSl3wUa/view?usp=sharing"
+              target="_blank"
+              >Google AI|Explore ML Workshop</a
+            >
+            <p>Google</p>
+          </div>
 
-          <fieldset>
-            <h3>Databases</h3>
-            <ul>
-              <li>PostgreSQL</li>
-              <li>Redis DB</li>
-            </ul>
-          </fieldset>
-
-          <fieldset>
-            <h3>Cloud Providers</h3>
-            <ul>
-              <li>Google Cloud</li>
-              <li>Heroku</li>
-              <li>Railway App</li>
-              <li>Vercel</li>
-              <li>Firebase</li>
-            </ul>
-          </fieldset>
-
-          <fieldset>
-            <h3>CMS</h3>
-            <ul>
-              <li>Sanity</li>
-              <li>Wordpress</li>
-            </ul>
-          </fieldset>
-
-          <fieldset>
-            <h3>Tools / Methodologies</h3>
-            <ul>
-              <li>Jira / Kanban Boards</li>
-              <li>Confluence / Service Now</li>
-              <li>Terminal/ CLI</li>
-              <li>Github Actions DevOps</li>
-            </ul>
-          </fieldset>
-        </section>
+          <div class="cert-card">
+            <span>Astrophysics Workshop Conductor</span>
+            <p>NIT Calicut</p>
+          </div>
+        </div>
       </section>
 
-      <section id="four">
-        <blockquote>
-          <h2>📜 Manifesto</h2>
-          <p id="manifestol1"></p>
-          <br />
-          <p id="manifestol2"></p>
-          <br />
-          <p id="manifestol3"></p>
-        </blockquote>
-      </section>
+      <style>
+        .cert-card {
+          background-color: #444;
+          border-radius: 8px;
+          padding: 1rem;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+          transition: transform 0.2s ease;
+        }
 
-      <section class="light" id="five">
-        <u><h2>👩🏽‍🚀 Projects</h2></u>
+        .cert-card:hover {
+          transform: translateY(-2px);
+        }
 
-        <h2>🏆 Certifications And Workshops</h2>
-        <label
-          ><a
-            href="https://www.freecodecamp.org/certification/ReubenRoy/javascript-algorithms-and-data-structures"
-            target="_blank"
-            >JavaScript Algorithms and Data Structures</a
-          >
-          - freeCodeCamp.org</label
-        >
-        <label
-          ><a
-            href="https://www.freecodecamp.org/certification/ReubenRoy/responsive-web-design"
-            target="_blank"
-            >Responsive Web Design</a
-          >
-          - freeCodeCamp.org</label
-        >
-        <label
-          ><a
-            href="https://www.coursera.org/account/accomplishments/certificate/PP9R2W2SGRXH"
-            target="_blank"
-            >Introduction to Data Science in Python</a
-          >
-          - University of Michigan & Coursera</label
-        >
-        <label
-          ><a
-            href="https://drive.google.com/file/d/1-dm9rRxr2olYYuFQeU1J7owzvZSl3wUa/view?usp=sharing"
-            target="_blank"
-            >Google AI|Explore ML Workshop</a
-          >
-          - Google</label
-        >
-        <label>Conducted Astrophysics Workshop at Nit Calicut</label>
-      </section>
+        .cert-card a {
+          color: #45b7d1;
+          text-decoration: none;
+          font-weight: bold;
+        }
 
-      <section id="six">
-        <blockquote>
-          <p>The best way out is always through <br />-Robert Frost</p>
-        </blockquote>
-      </section>
+        .cert-card a:hover {
+          color: #4ecdc4;
+        }
 
-      <section class="left" id="seven">
-        <h2>Work History</h2>
+        .cert-card span {
+          color: #ddd;
+          font-weight: bold;
+        }
 
-        <h3>Tata Consultancy Services(TCS)</h3>
-        <p>
-          This is where I learned coporate stuff and how companies work at
-          scale, and a whole host of tools to work in Agile sprint based teams
-        </p>
+        .cert-card p {
+          margin: 0.25rem 0 0 0;
+          color: #999;
+          font-size: 0.9rem;
+        }
+      </style>
 
-        <u><h2>Internships</h2></u>
+      <section id="three">
+        <div style="text-align: center; margin-bottom: 2rem">
+          <h2><u>Work Experience</u></h2>
+        </div>
 
-        <h3>ElectroBiosonics, Cochin</h3>
-        <p>December 2018</p>
-        <p>
-          Worked under Dr Cherian for PCB designing using MPLabX and
-          fabrication, electronic equipment assembly, commercial electroplating,
-          transformers and power systems manufacturing etc.
-        </p>
-        <h3>Keltron, Thrissur, Kerala</h3>
-        <p>May 2019</p>
-        <p>
-          Worked with Arduino to make connected devices and electronics to
-          understand more about the internet of things.
-        </p>
-        <h3>Geo-Enterprises, Kerala</h3>
-        <p>December 2020</p>
-        <p>
-          Did digital marketing, search-engine optimisation, acquired skills
-          related to customer and employee management.
-        </p>
+        <div style="max-width: 800px; margin: 0 auto">
+          <div class="experience-section">
+            <h3 style="color: #4ecdc4; margin-bottom: 1.5rem">Work History</h3>
+
+            <div class="experience-card">
+              <h4>Tata Consultancy Services (TCS)</h4>
+              <p class="experience-description">
+                This is where I learned corporate stuff and how companies work
+                at scale, and a whole host of tools to work in Agile sprint
+                based teams
+              </p>
+            </div>
+          </div>
+
+          <div class="experience-section">
+            <h3 style="color: #4ecdc4; margin-bottom: 1.5rem">Internships</h3>
+
+            <div class="experience-card">
+              <h4>ElectroBiosonics, Cochin</h4>
+              <p class="experience-date">December 2018</p>
+              <p class="experience-description">
+                Worked under Dr Cherian for PCB designing using MPLabX and
+                fabrication, electronic equipment assembly, commercial
+                electroplating, transformers and power systems manufacturing
+                etc.
+              </p>
+            </div>
+
+            <div class="experience-card">
+              <h4>Keltron, Thrissur, Kerala</h4>
+              <p class="experience-date">May 2019</p>
+              <p class="experience-description">
+                Worked with Arduino to make connected devices and electronics to
+                understand more about the internet of things.
+              </p>
+            </div>
+
+            <div class="experience-card">
+              <h4>Geo-Enterprises, Kerala</h4>
+              <p class="experience-date">December 2020</p>
+              <p class="experience-description">
+                Did digital marketing, search-engine optimisation, acquired
+                skills related to customer and employee management.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section id="eight">

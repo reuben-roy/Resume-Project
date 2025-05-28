@@ -52,8 +52,8 @@ section {
   position: relative;
   font-size: 1.25rem;
   line-height: 1.5;
-  margin-bottom: var(--spacing);
-  margin: 2rem 2rem;
+  /* margin-bottom: var(--spacing); */
+  /* margin: 2rem 2rem; */
 }
 
 blockquote {
@@ -270,6 +270,16 @@ fieldset {
 
   /* Skills section responsive */
   #three section {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #five section {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #seven section {
     width: 100%;
     justify-content: center;
   }

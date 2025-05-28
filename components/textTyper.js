@@ -1,16 +1,20 @@
 export function typeText(text, elementId, delay, type) {
-    var i = 0;
-    var element = document.getElementById(elementId);
+    const element = document.getElementById(elementId);
+    if (!element) return; // Early return if element doesn't exist
+
     switch (type) {
         case "string":
-            var intervalId = setInterval(function () {
-                // element.textContent += text.charAt(i);
-                element.innerHTML += text.charAt(i);
-                i++;
-                if (i > text.length) {
-                    clearInterval(intervalId);
+            let i = 0;
+
+            function typeNextChar() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeNextChar, delay);
                 }
-            }, delay);
+            }
+
+            typeNextChar();
             break;
     }
-}  
+}
