@@ -13,6 +13,11 @@ export async function fetchBlogPosts() {
             slug
             excerpt
             date
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
             author {
               node {
                 name
@@ -57,6 +62,11 @@ export async function fetchPostBySlug(slug) {
           content
           slug
           date
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
           author {
             node {
               name
@@ -112,33 +122,59 @@ export function renderBlogPosts(posts) {
     return;
   }
 
-  const postsGrid = document.createElement('div');
-  postsGrid.className = 'posts-grid';
-
+  // Group posts by category
+  const categoryMap = {};
   posts.forEach(post => {
-    const postCard = document.createElement('article');
-    postCard.className = 'post-card';
-
-    postCard.innerHTML = `
-        <h2 class="post-title">
-          <a href="?slug=${post.slug}">${post.title}</a>
-        </h2>
-        <div class="post-meta">
-          <span class="post-author">By ${post.author.node.firstName} ${post.author.node.lastName}</span>
-          <span class="post-date">${new Date(post.date).toLocaleDateString()}</span>
-        </div>
-        <div class="post-categories">
-          ${post.categories.nodes.map(cat => `<span class="category">${cat.name}</span>`).join('')}
-        </div>
-        <div class="post-excerpt">
-          ${post.excerpt || post.content.substring(0, 200) + '...'}
-        </div>
-      `;
-
-    postsGrid.appendChild(postCard);
+    post.categories.nodes.forEach(category => {
+      if (!categoryMap[category.name]) {
+        categoryMap[category.name] = [];
+      }
+      categoryMap[category.name].push(post);
+    });
   });
 
-  blogContainer.appendChild(postsGrid);
+  // Create sections for each category
+  Object.entries(categoryMap).forEach(([categoryName, categoryPosts]) => {
+    const categorySection = document.createElement('section');
+    categorySection.className = 'category-section';
+
+    const categoryTitle = document.createElement('h2');
+    categoryTitle.textContent = categoryName;
+    categoryTitle.className = 'category-title';
+    categorySection.appendChild(categoryTitle);
+
+    const scrollableContainer = document.createElement('div');
+    scrollableContainer.className = 'scrollable-container';
+
+    const postsGrid = document.createElement('div');
+    postsGrid.className = 'posts-grid';
+
+    categoryPosts.forEach(post => {
+      const postCard = document.createElement('article');
+      postCard.className = 'post-card';
+
+      postCard.innerHTML = `
+          ${post.featuredImage?.node?.sourceUrl ? `<img src="${post.featuredImage.node.sourceUrl}" alt="${post.title}" class="post-image">` : ''}
+          <h2 class="post-title">
+            <a href="?slug=${post.slug}">${post.title}</a>
+          </h2>
+          <div class="post-meta">
+            <span class="post-author">By ${post.author.node.firstName} ${post.author.node.lastName}</span>
+            <span class="post-date">${new Date(post.date).toLocaleDateString()}</span>
+          </div>
+          <div class="post-excerpt">
+            ${post.excerpt || (post.content ? post.content.substring(0, 200) + '...' : 'No content available')}
+          </div>
+        `;
+
+      postsGrid.appendChild(postCard);
+    });
+
+    scrollableContainer.appendChild(postsGrid);
+    categorySection.appendChild(scrollableContainer);
+    blogContainer.appendChild(categorySection);
+  });
+
   main.appendChild(blogContainer);
 }
 
@@ -146,10 +182,14 @@ export function renderBlogPosts(posts) {
 export function renderSinglePost(post) {
   const main = document.querySelector('main');
 
+  const scrollableContainer = document.createElement('div');
+  scrollableContainer.className = 'scrollable-container';
+
   const postContainer = document.createElement('div');
   postContainer.className = 'single-post';
 
   postContainer.innerHTML = `
+      ${post.featuredImage?.node?.sourceUrl ? `<img src="${post.featuredImage.node.sourceUrl}" alt="${post.title}" class="post-image">` : ''}
       <article class="post-content">
         <h1 class="post-title">${post.title}</h1>
         <div class="post-meta">
@@ -166,7 +206,8 @@ export function renderSinglePost(post) {
       </article>
     `;
 
-  main.appendChild(postContainer);
+  scrollableContainer.appendChild(postContainer);
+  main.appendChild(scrollableContainer);
 }
 
 // Main initialization function for blog content

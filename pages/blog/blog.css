@@ -80,8 +80,8 @@ a {
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 0 1rem;
+  /* align-items: center; */
+  /* padding: 0 1rem; */
 }
 
 .nav-logo {
@@ -96,27 +96,14 @@ a {
 .nav-menu {
   display: flex;
   flex-direction: column;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 1.5rem;
-  width: 100%;
-}
-
-.nav-item {
-  width: 100%;
 }
 
 .nav-item a {
   color: white;
   text-decoration: none;
   padding: 1rem 1.5rem;
-  border-radius: 8px;
   transition: all 0.3s ease;
   display: block;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .nav-item a:hover {
@@ -195,12 +182,6 @@ body {
   padding-top: 0;
 }
 
-@media (max-width: 768px) {
-  body {
-    padding-left: 0;
-    padding-top: 80px;
-  }
-}
 main {
   max-width: 1200px;
   margin: 0 auto;
@@ -219,6 +200,11 @@ section {
 }
 
 @media (max-width: 768px) {
+  body {
+    padding-left: 0;
+    padding-top: 80px;
+  }
+
   main {
     padding: 1rem;
   }
@@ -350,6 +336,7 @@ section {
   padding: 1.5rem;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 1.5rem;
 }
 
 .post-title a {
@@ -572,4 +559,24 @@ section {
   .category-header h2 {
     font-size: 1.5rem;
   }
+}
+
+.scrollable-container {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.posts-grid,
+.single-post {
+  display: inline-block;
+  white-space: normal;
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
 }
