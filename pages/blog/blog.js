@@ -3,6 +3,10 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { createStars } from '../../components/ThreeJsComponents/stars.js';
 import { addLights } from "../../components/ThreeJsComponents/lights.js";
+import { initBlog } from "./blogController.js";
+
+// Initialize the blog when the page loads
+document.addEventListener('DOMContentLoaded', initBlog);
 
 var camera;
 var scene;

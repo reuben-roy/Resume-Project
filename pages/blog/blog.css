@@ -327,3 +327,249 @@ section {
   color: #999;
   font-size: 0.9rem;
 }
+
+.blog-container {
+  max-width: 1200px;
+}
+
+.blog-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.post-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.post-title a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.post-title a:hover {
+  color: #ffd700;
+}
+
+.post-meta {
+  display: flex;
+  gap: 1rem;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.post-categories {
+  margin: 0.5rem 0;
+}
+
+.category {
+  background: rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+  /* padding: 0.2rem 0.5rem; */
+  border-radius: 15px;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+}
+
+.post-excerpt {
+  color: #ddd;
+  line-height: 1.5;
+}
+
+.single-post {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.post-content {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.post-body {
+  color: #fff;
+  line-height: 1.6;
+  margin: 2rem 0;
+}
+
+.back-link {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.no-posts {
+  text-align: center;
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.blog-main {
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.blog-container {
+  max-width: 1200px;
+}
+
+.category-section {
+  /* margin-bottom: 3rem; */
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.category-header h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.more-link {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.more-link:hover {
+  color: #0056b3;
+}
+
+.articles-scroll {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  scroll-behavior: smooth;
+}
+
+.articles-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.articles-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.articles-scroll::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.articles-scroll::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.article-card {
+  min-width: 280px;
+  height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-image {
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+}
+
+.card-content {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: white;
+}
+
+.card-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.card-content p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Category-specific card styles */
+.anime-card .card-image {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+}
+
+.movie-card .card-image {
+  background: linear-gradient(135deg, #4834d4, #686de0);
+}
+
+.book-card .card-image {
+  background: linear-gradient(135deg, #00d2d3, #54a0ff);
+}
+
+.tv-card .card-image {
+  background: linear-gradient(135deg, #5f27cd, #341f97);
+}
+
+.nonfiction-card .card-image {
+  background: linear-gradient(135deg, #00d2d3, #01a3a4);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .blog-main {
+    padding: 1rem;
+  }
+
+  .article-card {
+    min-width: 240px;
+    height: 280px;
+  }
+
+  .card-image {
+    height: 160px;
+  }
+
+  .category-header h2 {
+    font-size: 1.5rem;
+  }
+}
