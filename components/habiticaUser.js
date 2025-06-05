@@ -40,48 +40,22 @@ function displayUserData(userData) {
     const stats = userData.data.stats;
     const data = userData.data;
 
-    document.getElementById("lvl").innerHTML = `
-        <div class="stat-level">
-            <p>Level: ${stats.lvl}</p>
-            <p>Class: ${stats.class.toUpperCase()}</p>
-        </div>`;
+    document.getElementById("lvl").innerHTML = `<p class="stat-level">Reuben Roy -- Level: ${stats.lvl} -- ${stats.class.toUpperCase()}</p>`;
 
-    document.getElementById("health").innerHTML = `
-        <div class="stat-row">
-            <div class="stat-header">
-                <h6 class="stat-label">Health</h6>
-                <span class="stat-value">${stats.hp.toFixed(1)}/${stats.maxHealth}</span>
-            </div>
-            <div class="progress-container">
-                <progress class="progress progress-health" value="${stats.hp}" max="${stats.maxHealth}"></progress>
-            </div>
-        </div>`;
+    document.getElementById('health').innerHTML = `Health:<br>${stats.hp.toFixed(1)}/${stats.maxHealth}`;
+    document.getElementById('exp').innerHTML = `Experience:<br>${stats.exp.toFixed(1)}/${stats.toNextLevel}`;
+    document.getElementById('mana').innerHTML = `Mana:<br>${stats.mp.toFixed(1)}/${stats.maxMP}`;
 
-    document.getElementById("exp").innerHTML = `
-        <div class="stat-row">
-            <div class="stat-header">
-                <h6 class="stat-label">Exp</h6>
-                <span class="stat-value">${stats.exp.toFixed(1)}/${stats.toNextLevel}</span>
-            </div>
-            <div class="progress-container">
-                <progress class="progress progress-exp" value="${stats.exp}" max="${stats.toNextLevel}"></progress>
-            </div>
-        </div>`;
+    // Update progress bars
+    document.getElementById('healthProgress').value = stats.hp;
+    document.getElementById('healthProgress').max = stats.maxHealth;
 
-    document.getElementById("mana").innerHTML = `
-        <div class="stat-row">
-            <div class="stat-header">
-                <h6 class="stat-label">Mana</h6>
-                <span class="stat-value">${stats.mp.toFixed(1)}/${stats.maxMP}</span>
-            </div>
-            <div class="progress-container">
-                <progress class="progress progress-mana" value="${stats.mp}" max="${stats.maxMP}"></progress>
-            </div>
-        </div>`;
+    document.getElementById('expProgress').value = stats.exp;
+    document.getElementById('expProgress').max = stats.toNextLevel;
+
+    document.getElementById('manaProgress').value = stats.mp;
+    document.getElementById('manaProgress').max = stats.maxMP;
 
     document.getElementById("lastUpdate").innerHTML = `
-        <div class="stat-info">Stats last logged in: ${data.auth.timestamps.loggedin.slice(0, 10)}</div>`;
-
-    document.getElementById("streak").innerHTML = `
-        <div class="stat-info">Streak: ${data.achievements.streak}</div>`;
+        <div class="stat-info">Last check in: ${data.auth.timestamps.loggedin.slice(0, 10)}</div>`;
 }

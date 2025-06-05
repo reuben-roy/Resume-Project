@@ -20,7 +20,16 @@
 
       function toggleMobileMenu() {
         const navMenu = document.querySelector(".nav-menu");
+        const navbar = document.querySelector(".navbar");
+
         navMenu.classList.toggle("active");
+
+        // Change z-index based on menu state
+        if (navMenu.classList.contains("active")) {
+          navbar.style.zIndex = "2";
+        } else {
+          navbar.style.zIndex = "0";
+        }
       }
 
       function scrollToSection(sectionId) {
@@ -35,9 +44,23 @@
   <body>
     <nav class="navbar">
       <div class="nav-container">
-        <a href="#one" class="nav-logo" onclick="scrollToSection('one')"
-          >explosion fun :)</a
+        <div
+          class="nav-toggle"
+          onclick="toggleMobileMenu()"
+          aria-label="Toggle navigation menu"
+          role="button"
         >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </div>
+        <a href="#one" class="nav-logo" onclick="scrollToSection('one')">
+          <img
+            src="./media/logo.png"
+            alt="Logo"
+            style="height: 40px; width: auto"
+          />
+        </a>
         <ul class="nav-menu">
           <li class="nav-item">
             <a href="#one" onclick="scrollToSection('one')">Home</a>
@@ -49,75 +72,142 @@
             <a href="/pages/blog/blog.html">Blog</a>
           </li>
         </ul>
-        <div
-          class="nav-toggle"
-          onclick="toggleMobileMenu()"
-          aria-label="Toggle navigation menu"
-          role="button"
-        >
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </div>
       </div>
     </nav>
 
-    <canvas id="bg"></canvas>
-    <div id="app"></div>
+    <!-- <canvas id="bg"></canvas> -->
 
     <main>
-      <section id="one" style="display: flex; flex-wrap: wrap; max-width: 100%">
-        <div
-          style="
-            flex: 1;
-            min-width: 300px;
-            max-width: 100%;
-            background-color: #333;
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 1rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            box-sizing: border-box;
-          "
-        >
-          <header style="text-align: center">
-            <p style="font-size: 1.5rem; margin: 1rem; color: white">
-              Reuben Roy
-            </p>
-            <span style="font-size: 1.5rem; margin: 0.5rem 0; text-align: left">
-              <div id="lvl" style="color: #ccc"></div>
-              <div id="health" style="color: #ff6b6b"></div>
-              <div id="exp" style="color: #4ecdc4"></div>
-              <div id="mana" style="color: #45b7d1"></div>
-              <div id="lastUpdate" style="font-size: 1rem; color: #999"></div>
-              <div id="streak" style="font-size: 1rem; color: #ffd93d"></div>
-            </span>
-          </header>
-        </div>
-
-        <div
-          style="
-            flex: 1;
-            min-width: 300px;
-            max-width: 100%;
-            background-color: #333;
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 1rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            box-sizing: border-box;
-            font-size: 1.3rem;
-          "
-          class="responsive-content"
-        >
+      <section id="zero">
+        <div id="textBox">
+          <p id="name"></p>
+          <p id="title"></p>
+          <p id="intro"></p>
+          <p id="caveat"></p>
           <p id="designation"></p>
           <p id="intro1"></p>
           <p id="intro2"></p>
         </div>
       </section>
+      <section id="one">
+        <div id="linkedinCard">
+          <div style="display: flex; align-items: center; margin-bottom: 1rem">
+            <img
+              id="linkedinProfilePic"
+              src=""
+              alt="Profile Picture"
+              style="
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                margin-right: 1rem;
+              "
+            />
+            <div>
+              <h3 id="linkedinName" style="margin: 0; color: #0077b5"></h3>
+              <p
+                id="linkedinHeadline"
+                style="margin: 0; color: #666; font-size: 0.9rem"
+              ></p>
+            </div>
+          </div>
 
-      <section id="spotify" style="margin: 0 auto">
+          <div style="margin: 0.5rem 0">
+            <div
+              id="linkedinConnections"
+              style="color: #0077b5; font-weight: bold"
+            ></div>
+            <div
+              id="linkedinLocation"
+              style="color: #999; font-size: 0.9rem"
+            ></div>
+          </div>
+
+          <a
+            id="linkedinProfileLink"
+            href="https://www.linkedin.com/in/reuben-roy/"
+            target="_blank"
+            style="color: #0077b5; text-decoration: none; font-weight: bold"
+          >
+            <div style="margin: 1rem auto">View LinkedIn Profile →</div>
+          </a>
+        </div>
+
+        <span id="navButtonsContainer">
+          <a href="./pages/profession/profession.html">
+            <button
+              id="navButtons"
+              onmouseover="this.style.transform='translateY(-2px)'"
+              onmouseout="this.style.transform='translateY(0)'"
+            >
+              ← Tech Skills | Work Experience | Projects
+            </button>
+          </a>
+
+          <a href="./pages/blog/blog.html">
+            <button
+              id="navButtons"
+              onmouseover="this.style.transform='translateY(-2px)'"
+              onmouseout="this.style.transform='translateY(0)'"
+            >
+              Blog →
+            </button>
+          </a>
+        </span>
+
+        <div id="habiticaCard">
+          <span style="margin: 0.5rem 0; text-align: left">
+            <div id="lvl" style="color: #ccc"></div>
+            <span class="progress-container">
+              <div id="health" style="color: #ff6b6b"></div>
+              <progress id="healthProgress" value="0"></progress>
+
+              <div id="exp" style="color: #4ecdc4"></div>
+              <progress id="expProgress" value="0"></progress>
+
+              <div id="mana" style="color: #45b7d1"></div>
+              <progress id="manaProgress" value="0"></progress>
+            </span>
+
+            <div id="lastUpdate" style="font-size: 1rem; color: #999"></div>
+          </span>
+        </div>
+
+        <div id="githubCard">
+          <div style="display: flex; align-items: center; margin-bottom: 1rem">
+            <img
+              id="githubProfilePic"
+              src="https://avatars.githubusercontent.com/u/83647134?v=4"
+              alt="GitHub Profile Picture"
+              style="
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                margin-right: 1rem;
+                border: 2px solid #30363d;
+              "
+            />
+            <div>
+              <h3 id="githubName">reuben-roy</h3>
+              <p id="githubBio" style="color: #8b949e">
+                Spring Boot/Java, Python3, PostgreSQL, ReactJS, JavaScript,
+                HTML, CSS, CMS Wordpress, Redis
+              </p>
+            </div>
+          </div>
+
+          <a
+            id="githubProfileLink"
+            href="https://github.com/reuben-roy"
+            target="_blank"
+            style="color: #58a6ff; text-decoration: none; font-weight: bold"
+          >
+            <div>View GitHub Profile →</div>
+          </a>
+        </div>
+
         <iframe
+          id="spotifyCard"
           style="border-radius: 12px"
           src="https://open.spotify.com/embed/playlist/7argnm9cuFJWo9txW9OzlD?utm_source=generator&theme=0"
           width="100%"

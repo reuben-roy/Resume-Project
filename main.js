@@ -12,17 +12,6 @@ var camera;
 var scene;
 var renderer;
 
-scene = new THREE.Scene();
-camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
-renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector("#bg"),
-});
-
 const headers = new Headers({
   "x-api-user": import.meta.env["VITE_USER_ID"],
   "x-api-key": import.meta.env["VITE_API_KEY"],
@@ -31,69 +20,85 @@ const headers = new Headers({
 // Uncomment to render habitica component
 fetchAndDisplayHabiticaUser(headers);
 
+// initializeThreeJS();
 
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(
-  window.innerWidth,
-  window.innerHeight
-); /* makes the renderer full screen */
+typeText("My name is Reuben", "name", 50, "string");
+typeText("FullStack | ASU | NIT Calicut", "title", 50, "string");
+typeText("I'm a FullStack Web Developer, with more than a couple of years of work experience. I'm presently doing a Masters program at Arizona State University and I did my Undergraduate degree from NIT Calicut before this.", "intro", 20, "string");
+typeText("But as you can expect, a person is more than just their job title", "caveat", 150, "string");
 
-camera.position.setZ(30);
+// Add this function to populate LinkedIn data
+function updateLinkedInCard() {
+  // Replace with your actual LinkedIn data or API integration
+  const linkedinData = {
+    name: "Reuben Roy",
+    headline: "FullStack Web Developer | ASU Graduate Student | NIT Calicut Alumnus",
+    profilePicture: "./media/reuben-profile.jpg",
+    location: "Tempe, United States",
+    profileUrl: "https://www.linkedin.com/in/reuben-roy/"
+  };
 
-renderer.render(scene, camera);
-
-function onResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  document.getElementById('linkedinName').textContent = linkedinData.name;
+  document.getElementById('linkedinHeadline').textContent = linkedinData.headline;
+  document.getElementById('linkedinProfilePic').src = linkedinData.profilePicture;
+  document.getElementById('linkedinConnections').textContent = linkedinData.connections;
+  document.getElementById('linkedinLocation').textContent = linkedinData.location;
+  document.getElementById('linkedinProfileLink').href = linkedinData.profileUrl;
 }
-window.addEventListener("resize", onResize, false);
 
-addToruses(scene);
-addLights(scene);
-createStars(scene, 200);
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', updateLinkedInCard);
 
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableZoom = false;
 
-const spaceTexture = new THREE.TextureLoader().load(
-  "https://images.pexels.com/photos/1341279/pexels-photo-1341279.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-);
-scene.background = spaceTexture;
+function initializeThreeJS() {
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xffffff);
 
-// Animated Moving Ring
-// renderer.render(scene, camera)
-function animate(t) {
-  TWEEN.update(t);
-  requestAnimationFrame(animate);
-  controls.update();
+  camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000
+  );
+
+  renderer = new THREE.WebGLRenderer({
+    canvas: document.querySelector("#bg"),
+  });
+
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(0, 0);
+
+  // renderer.setSize(
+  //   window.innerWidth,
+  //   window.innerHeight
+  // );
+  camera.position.setZ(30);
 
   renderer.render(scene, camera);
+
+  function onResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+  window.addEventListener("resize", onResize, false);
+
+  addToruses(scene);
+  addLights(scene);
+  createStars(scene, 50);
+
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableZoom = false;
+
+  // Animated Moving Ring
+  // renderer.render(scene, camera)
+  function animate(t) {
+    TWEEN.update(t);
+    requestAnimationFrame(animate);
+    controls.update();
+
+    renderer.render(scene, camera);
+  }
+
+  animate();
 }
-
-animate();
-
-let cards = [];
-let arr = [
-  "#one",
-  '#spotify',
-  "#two",
-  "#three",
-  "#four",
-  "#five",
-  "#six",
-  "#seven",
-  "#eight",
-];
-for (let i = 0; i < 8; i++) {
-  cards.push(document.querySelector(arr[i]));
-}
-
-typeText("FullStack | ASU | NIT Calicut", "designation", 50, "string");
-typeText("Welcome to my website. It is very much a work in progress as I'll be updating it often.", "intro1", 20, "string");
-typeText(
-  "This website is meant to capture much of what I have learned and value in life. It is also supposed to help me communicate with people on what I'm working on presently.",
-  "intro2",
-  50,
-  "string"
-);

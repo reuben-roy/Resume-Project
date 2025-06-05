@@ -4,7 +4,7 @@ import * as THREE from 'three';
 export function createStars(scene, count = 200) {
     Array(count).fill().forEach(() => {
         const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-        const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+        const material = new THREE.MeshStandardMaterial({ color: 0x000000 });
         const star = new THREE.Mesh(geometry, material);
 
         // Randomize position within a specified range

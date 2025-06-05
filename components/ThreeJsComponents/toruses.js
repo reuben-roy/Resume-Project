@@ -4,10 +4,10 @@ import * as THREE from 'three';
 export function addToruses(scene) {
     // Define torus configurations in an array for easy modification
     const torusConfigs = [
-        { radius: 10, color: 0xff6347 },
-        { radius: 16, color: 0x696969 },
-        { radius: 22, color: 0x66b3ff },
-        { radius: 28, color: 0x000033 }
+        { radius: 10, color: 0x000000 },
+        { radius: 16, color: 0x000000 },
+        { radius: 22, color: 0x000000 },
+        { radius: 28, color: 0x000000 }
     ];
 
     // Create each torus and add to scene

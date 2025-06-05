@@ -1,6 +1,6 @@
 export function typeText(text, elementId, delay, type) {
     const element = document.getElementById(elementId);
-    if (!element) return; // Early return if element doesn't exist
+    if (!element) return;
 
     switch (type) {
         case "string":
